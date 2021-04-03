@@ -5,8 +5,8 @@ advanced:
   css_style: 'text-align: center'
 design:
   background:
-    image: headers/pomegranate.jpg
-    image_darken: 0.2
+    image: headers/lemonade.jpg
+    image_darken: 0.3
     text_color_light: true
   columns: "1"
   spacing:
@@ -17,7 +17,7 @@ design:
     - 200px
 headless: true
 subtitle: ""
-title: About me
-weight: 10
+title: Get in touch!
+weight: 90
 widget: blank
 ---

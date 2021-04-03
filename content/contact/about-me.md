@@ -21,7 +21,7 @@ title: ""
 weight: 20
 widget: blank
 ---
-
+<!--
 
 
 
@@ -35,7 +35,7 @@ My [research](https://profiles.impactstory.org/u/0000-0002-8082-1890) focused on
 
 <img src="students2.jpg" class="center-block" alt="Lab meeting" style="width:60%;">
 
-While at OHSU, I became an avid user of the statistical programming language R, both in the lab as a Principal Investigator and in the classroom as a professor. I developed a passion for programming and education, and during my tenure at OHSU I developed and taught multiple graduate-level [data science courses](/categories/course/) and [workshops](/categories/workshop/). 
+While at OHSU, I became an avid user of the statistical programming language R, both in the lab as a Principal Investigator and in the classroom as a professor. I developed a passion for programming and education, and during my tenure at OHSU I developed and taught multiple graduate-level [data science courses](/categories/course/) and [workshops](/categories/workshop/).
 
 <img src="ropensci.jpg" class="center-block" alt="ROpenSci Unconference" style="width:60%;">
 
@@ -47,4 +47,4 @@ I also trained the [Office of Research Impact at the Oregon Clinical & Translati
 My teaching materials have been used by [NASA](https://open.nasa.gov/explore/datanauts/), [Pew Research Center](https://medium.com/pew-research-center-decoded/using-tidyverse-tools-with-pew-research-center-survey-data-in-r-bdfe61de0909), [University of Oregon](https://github.com/uo-datasci-specialization), and now [RStudio](https://www.rstudio.com/). I am also a co-author of the book [_blogdown: Creating Websites with R Markdown_](https://bookdown.org/yihui/blogdown/).
 
 
-Thank you so much for reading.
+Thank you so much for reading. -->

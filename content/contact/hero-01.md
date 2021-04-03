@@ -1,4 +1,4 @@
----
+<!-- ---
 active: true
 advanced:
   css_class: ""
@@ -17,7 +17,7 @@ design:
     - 200px
 headless: true
 subtitle: ""
-title: Get in touch
-weight: 90
+title: About me
+weight: 10
 widget: blank
----
+--- -->

@@ -7936,7 +7936,7 @@ ul.nav-icons li.nav-item a.nav-link {
   z-index: -99; }
 
 .dark .search-results {
-  background-color: #F0F7FA; }
+  background-color: #282a36; }
 
 .searching {
   overflow: hidden; }
@@ -7969,7 +7969,7 @@ ul.nav-icons li.nav-item a.nav-link {
   padding-bottom: 1rem; }
 
 .dark .search-header {
-  background-color: #F0F7FA; }
+  background-color: #282a36; }
 
 .search-header h1 {
   margin: 0;
@@ -8034,10 +8034,10 @@ ul.nav-icons li.nav-item a.nav-link {
 /* DARK themed components. */
 /* Algolia search input */
 .dark .ais-search-box--input {
-  background-color: #F0F7FA; }
+  background-color: #282a36; }
 
 .dark #search-query {
-  background-color: #F0F7FA; }
+  background-color: #282a36; }
 
 /*************************************************
  *  Page content
@@ -8371,7 +8371,7 @@ ul.share li:hover i {
     opacity: 1; } }
 
 .home-section {
-  background-color: white;
+  background-color: #F0F7FA;
   padding: 110px 0 110px 0;
   animation: intro 0.3s both;
   animation-delay: 0.15s; }
@@ -8424,13 +8424,13 @@ ul.share li:hover i {
   padding-top: 50px; }
 
 .home-section:nth-of-type(even) {
-  background-color: #f7f7f7; }
+  background-color: #F0F7FA; }
 
 .dark .home-section {
-  background-color: #F0F7FA; }
+  background-color: #272935; }
 
 .dark .home-section:nth-of-type(even) {
-  background-color: #F0F7FA; }
+  background-color: #23252f; }
 
 @media screen and (max-width: 768px) {
   .home-section {
@@ -9047,7 +9047,7 @@ body.dark,
 .dark .form-control,
 .dark .form-control:focus {
   color: #f8f8f2;
-  background: #F0F7FA; }
+  background: #282a36; }
 
 .dark .form-control {
   background-color: #44475a; }

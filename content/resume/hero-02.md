@@ -5,7 +5,7 @@ advanced:
   css_style: 'text-align: center'
 design:
   background:
-    image: headers/pomegranate.jpg
+    image: headers/lemonade.jpg
     image_darken: 0.2
     text_color_light: true
   columns: "1"

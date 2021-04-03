@@ -2,6 +2,13 @@
 active: true
 date_format: January 2006
 experience:
+- company: School of Cities
+  company_url: https://www.schoolofcities.utoronto.ca/urban-pilot-lab/multidisciplinary-urban-capstone-project/
+  date_end: "2021-04-12"
+  date_start: "2020-09-01"
+  description: "Multidisciplinary Capstone Design Project - Key Living: Measuring and Enhancing Community Vitality"
+  location: Remote
+  title: Student Consultant
 - company: RStudio
   company_url: https://www.rstudio.com/
   date_end: ""
