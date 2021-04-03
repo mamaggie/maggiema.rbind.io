@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Julia Grieser Painter | Maggie Ma</title>
+    <link>https://maggie-98.github.io/authors/julia-grieser-painter/</link>
+      <atom:link href="https://maggie-98.github.io/authors/julia-grieser-painter/index.xml" rel="self" type="application/rss+xml" />
+    <description>Julia Grieser Painter</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Maggie Ma 2021</copyright><lastBuildDate>Wed, 20 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://maggie-98.github.io/img/pom-card.png</url>
+      <title>Julia Grieser Painter</title>
+      <link>https://maggie-98.github.io/authors/julia-grieser-painter/</link>
+    </image>
+    
+    <item>
+      <title>Subtyping cognitive profiles in Autism Spectrum Disorder using a random forest algorithm</title>
+      <link>https://maggie-98.github.io/publication/2017-subtyping/</link>
+      <pubDate>Wed, 20 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>https://maggie-98.github.io/publication/2017-subtyping/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

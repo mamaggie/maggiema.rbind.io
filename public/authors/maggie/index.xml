@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maggie Ma</title>
+    <link>https://maggie-98.github.io/authors/maggie/</link>
+      <atom:link href="https://maggie-98.github.io/authors/maggie/index.xml" rel="self" type="application/rss+xml" />
+    <description>Maggie Ma</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Maggie Ma 2021</copyright>
+    <image>
+      <url>https://maggie-98.github.io/img/pom-card.png</url>
+      <title>Maggie Ma</title>
+      <link>https://maggie-98.github.io/authors/maggie/</link>
+    </image>
+    
+  </channel>
+</rss>
