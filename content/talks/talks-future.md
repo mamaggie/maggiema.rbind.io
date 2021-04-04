@@ -1,5 +1,5 @@
----
-active: true
+<!-- ---
+active: false
 advanced:
   css_class: ""
   css_style: ""
@@ -23,4 +23,4 @@ subtitle: ""
 title: Upcoming
 weight: 20
 widget: pages
----
+--- -->

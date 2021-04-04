@@ -1,5 +1,5 @@
 ---
-active: true
+active: false
 advanced:
   css_class: mini
   css_style: ""

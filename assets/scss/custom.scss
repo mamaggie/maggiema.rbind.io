@@ -9,25 +9,33 @@ body {
   min-height: 100px !important;
 }
 
+.navbar {
+    background-color: #fcfcfc33;
+    box-shadow: 0 0 50px rgba(252, 252, 252, 0.76);
+    text-transform: lowercase;
+    background-image: linear-gradient(to bottom, #fcfcfc, #fcfcfc, #fcfcfc, #fcfcfced, #fcfcfcba, #fcfcfc33) !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
   letter-spacing: 0.04em;
-  color: #172A3A;
+  color: #172A3A; //color for headings 'projects; ;interests'
 }
+
 
 /* links */
 
-a:active, 
-a:focus, 
+a:active,
+a:focus,
 a:hover {
-  color: #004346;
+  color: #712bd6;
 }
 
 /* nav */
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link:focus {
-	color: #06805E;
+	color: #712bd6; //hover nav color
 }
 
 .navbar {
@@ -67,7 +75,7 @@ a:hover {
   width: 0%;
   content: '.'; /* make invisible, dot beneath links */
   color: transparent;
-  background: #06805E;
+  background: #712bd6; //nav underline color
   height: 2px;
 }
 
@@ -78,7 +86,7 @@ a:hover {
 /* home page */
 
 .portrait-title h2 {
-  color: #333;
+  color: #333; //portrait name
 }
 
 #about .col-12.col-lg-8 {
@@ -94,7 +102,7 @@ a:hover {
 }
 
 .home-section:not(:first-of-type) {
-  padding: 25px 0 50px 0; 
+  padding: 25px 0 50px 0;
 }
 
 /* this erases the margin-bottom for h1 */
@@ -132,8 +140,8 @@ pre {
   border-radius: 0px; /*undo rounded corners*/
 }
 
-pre code { 
-  background: none; 
+pre code {
+  background: none;
   font-size: 0.8rem;
 }
 
@@ -242,7 +250,7 @@ div.universal-wrapper.pt-3 h1 {
 hr {
   border: 0;
   height: 1px;
-  background: #004346;
+  background: #712bd6;
   background-image: none;
 }
 
@@ -251,11 +259,11 @@ hr {
     margin-left: auto;
     margin-right: auto;
  }
- 
+
 .home-section.wg-experience .card-body {
 	padding: .5rem;
 }
- 
+
 .home-section.wg-experience .card .card-text{
   padding: 0;
 }
@@ -273,11 +281,43 @@ iframe {
 	border: 0;
 }
 
+/* HELLO image */
+
+// .parallax {
+//   background-position: center center;
+//   padding-top: 100vh !important;
+//   background-attachment: scroll !important; /*override 'fixed' for iOS problem */
+// }
+//
+// .parallax:after {
+//   content:"";
+//   position: fixed; /* stretch a fixed position to the whole screen */
+//   top:0;
+//   height:100vh; /* fix for mobile browser address bar appearing disappearing */
+//   left:0;
+//   right:0;
+//   z-index:-1; /* needed to keep in the background */
+//   background: url(/img/hello.jpg) center center;
+//   -webkit-background-size: contain;
+//   -moz-background-size: contain;
+//   -o-background-size: contain;
+//   background-size: contain;
+//   background-repeat: no-repeat;
+// }
+
+// @media screen and (max-width: 768px) {
+//   .home-section.bg-image {
+//     background-position-x: 39%;
+//     background-size: 200%;
+//     padding: 330px 0 275px 0;
+//   }
+// }
+
 /* pagination buttons */
 
 .page-link {
 	color: #004346;
-	background-color: #F0F7FA;
+	background-color: #fcfcfc33;//#F0F7FA;
 	border: 1px solid #004346;
   border-radius: 0px; /*undo rounded corners*/
 
@@ -322,12 +362,12 @@ iframe {
   max-width:20%;
   padding-right: 0px !important;
  }
- 
+
 .col-lg-10ish {
   flex:0 0 80%;
   max-width:80%;
  }
- 
+
 #TableOfContents li a, .toc-top li a {
 	padding: .125rem .5rem;
 	font-size: .8rem;
@@ -374,4 +414,65 @@ a > svg.anchor-symbol {
 a > svg.anchor-symbol:hover {
   fill: #06805E;
   transition: fill 0.6s ease;
+}
+
+
+/*------- iframe-----*/
+
+iframe {
+   -moz-transform-origin: top left;
+   -webkit-transform-origin: top left;
+   -o-transform-origin: top left;
+   -ms-transform-origin: top left;
+   transform-origin: top left;
+}
+
+.iframe-container {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border: #ddd 0 solid;
+  margin: 0 auto;
+}
+
+.iframe-container > iframe {
+  border: none;
+}
+
+
+
+
+/* -------About Section-------- */
+
+.home-section.wg-about {
+  padding-top: 0;
+  margin-top: 0px;
+  box-shadow: 0px -50px 50px 50px rgba(252, 252, 252, 1);
+}
+
+
+#about h1 {
+  margin-bottom: 50px;
+}
+
+#about h3 {
+  margin-top: 50px;
+}
+
+#about .portrait-title h2 {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+#about .portrait-title h3 {
+  font-family: "Josefin Slab";
+  margin-top: 10px;
+}
+
+#about .col-12.col-lg-8 {
+  padding-left: 70px !important;
+}
+
+.parallax {
+  background-attachment: fixed;
+  width: 100%;
 }

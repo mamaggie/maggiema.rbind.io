@@ -7,18 +7,18 @@ content:
   filter_button:
   - name: All
     tag: '*'
-  - name: website
-    tag: website
+  - name: recent
+    tag: recent
   - name: R
     tag: R
-  - name: Software
-    tag: software
-  - name: Workshop
-    tag: workshop
-  - name: Course
-    tag: course
-  - name: Book
-    tag: book
+  - name: maps
+    tag: maps
+  - name: regression
+    tag: regression
+  - name: data viz
+    tag: data viz
+  - name: research
+    tag: research
   filter_default: 0
   page_type: project
 design:
@@ -32,4 +32,3 @@ title: Projects
 weight: 65
 widget: portfolio
 ---
-

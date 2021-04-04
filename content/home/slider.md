@@ -3,7 +3,7 @@
 widget = "slider"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 20  # Order that this section will appear.
+weight = 30  # Order that this section will appear.
 
 # Slide interval.
 # Use `false` to disable animation or enter a time in ms, e.g. `5000` (5s).
@@ -11,19 +11,19 @@ interval = false
 
 # Slide height (optional).
 # E.g. `500px` for 500 pixels or `calc(100vh - 70px)` for full screen.
-height = "325px"
+height = "375px"
 
 # Slides.
 # Duplicate an `[[item]]` block to add more slides.
 [[item]]
   title = ""
-  content = "\"Alison was knowledgeable but at the same time very approachable. She had a sense of humor and very engaging style that gave me confidence that I can do this.\""
+  content = "\"Maggie was an extremely strong student able to quickly focus on solving problem in a clean, methodical and logical way. Her ability to concentrate is amazing.\""
   align = "center"  # Choose `center`, `left`, or `right`.
 
   # Overlay a color or image (optional).
   #   Deactivate an option by commenting out the line, prefixing it with `#`.
   overlay_color = "#404040"  # An HTML color value.
-  overlay_img = "headers/pomegranate.jpg"  # Image path relative to your `static/img/` folder.
+  overlay_img = "headers/banana.jpg"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.4  # Darken the image. Value in range 0-1.
 
   # Call to action button (optional).
@@ -42,7 +42,7 @@ height = "325px"
   overlay_color = "#404040"  # An HTML color value.
   overlay_img = "headers/daisy.jpg"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.4  # Darken the image. Value in range 0-1.
-  
+
   cta_label = "see my projects"
   cta_url = "/projects"
   cta_icon_pack = "fas"
@@ -61,7 +61,7 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
   content = "\"I really liked the content + Alison's teaching style.\""
@@ -75,7 +75,7 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
   content = "\"Alison was great - very knowledgeable, accessible and good sense of humor.\""
@@ -89,7 +89,7 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
   content = "\"Alison Hill was a patient instructor who listened to questions and carefully answered them. Clearly, the content had a LOT of thought put into it. Even the timing of the workshop was pretty perfect.\""
@@ -103,7 +103,7 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
   content = "\"It [was] so well-organized and Alison is so awesome as an instructor.\""
@@ -117,7 +117,7 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
   content = "\"Alison is excellent!\""
@@ -131,7 +131,7 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
   content = "\"Alison is an absolutely amazing presenter! Really really enjoyed the workshop. Thank you!\""
@@ -145,7 +145,7 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
   content = "\"Alison was a good presenter, trying to make difficult topics understandable and having good energy and enthusiasm for the subject matter.\""
@@ -159,7 +159,7 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
   content = "\"This was an inspiring workshop! I look forward to trying out what I learned in real life!\""
@@ -173,7 +173,7 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
   content = "\"I enjoyed your workshop and learned a lot. Thanks for your enthusiastic way of teaching.\""
@@ -187,7 +187,7 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
   content = "\"Alison is fantastic, did her best to explain not so easy to understand concepts.\""
@@ -201,10 +201,10 @@ height = "325px"
   cta_url = "/projects"
   cta_icon_pack = "fas"
   cta_icon = "spa"
-  
+
 [[item]]
   title = ""
-  content = "\"I appreciated the thoughtfulness of the workshop. I liked that things were broken down and we were building up an understanding and code.\""
+  content = "\"I am particularly impressed with her rapid rise into data science and 1,000,000 death project for the Toronto public services. Her SQL skills are superb! Maggie is also a very approachable, enthusiastic, and friendly person.\""
   align = "left"
 
   overlay_color = "#404040"  # An HTML color value.
