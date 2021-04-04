@@ -1,5 +1,5 @@
 title: Maggie Ma
-baseurl: https://maggiema.rbind.io
+baseurl: https://maggiema.netlify.app
 copyright: '&copy; Maggie Ma {year}'
 theme: hugo-academic
 enableGitInfo: no
