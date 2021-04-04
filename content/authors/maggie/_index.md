@@ -11,7 +11,7 @@ authors:
 superuser: true
 
 
-bio: My interests include predictive modeling, machine learning, spatial statistics, and data visualization. 
+bio: My interests include predictive modeling, machine learning, spatial statistics, and data visualization.
 
 education:
   courses:
@@ -36,7 +36,7 @@ role: Aspiring Data Scientist & Geospatial Analyst
 social:
 - icon: github
   icon_pack: fab
-  link: https://github.com/maggie-98
+  link: https://github.com/mamaggie
 - icon: linkedin-in
   icon_pack: fab
   link: https://www.linkedin.com/in/y-maggie-ma/
