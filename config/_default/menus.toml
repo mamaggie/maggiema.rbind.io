@@ -8,6 +8,10 @@
  url = "/contact"
  weight = 60
 
+[[main]]
+  name = "About"
+  url = "#about"
+  weight = 30
 #[[main]]
 #  name = "Blog"
 #  url = "/post"

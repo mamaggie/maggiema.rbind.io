@@ -21,3 +21,4 @@ title: ""
 weight: 10
 widget: blank
 ---
+{{< icon name="download" pack="fas" >}} Download my resume {{< staticref "media/resume.pdf" "newtab" >}}here{{< /staticref >}}.
