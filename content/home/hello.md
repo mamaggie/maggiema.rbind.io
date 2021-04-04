@@ -40,11 +40,9 @@ subtitle = ""
   # Customize the section spacing. Order is top, right, bottom, left.
   padding = ['30%', '0']
   position = 'fixed'
-  align = 'center'
-  background-size = 'contain'
-  webkit-background-size = 'contain'
-  moz-background-size = 'contain'
-  o-background-size = 'contain'
+  top = '50%'
+  left = '50%'
+
 
 [advanced]
  # Custom CSS.

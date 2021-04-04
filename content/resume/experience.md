@@ -33,61 +33,33 @@ date_format = "January 2006"
   company_url = "https://www.toronto.ca/city-government/accountability-operations-customer-service/city-administration/staff-directory-divisions-and-customer-service/city-planning/"
   location = 'Remote'
   date_start = '2020-09-01'
-
-
-[[experience]]
-  title = "Data Scientist & Professional Educator"
-  company = "RStudio"
-  company_url = "https://www.rstudio.com/"
-  location = "Remote"
-  date_start = "2018-10-22"
-  date_end = ""
-  description = """
-  """
+  description = "Project: MTSA Development Around Transit Stations"
 
 [[experience]]
-  title = "Associate Professor, Pediatrics"
-  company = "Oregon Health & Science University"
-  company_url = "https://www.ohsu.edu/"
-  location = "Portland, Oregon"
-  date_start = "2017-07-01"
-  date_end = "2018-10-19"
-  description = """ """
+  title = "Geospatial Researcher"
+  company = "Centre for Global Health Research, St, Michael's Hospital"
+  company_url = "http://www.cghr.org"
+  location = 'Toronto, Ontario'
+  date_start = '2019-04-30'
+  date_end = '2021-01-31'
+  description = "Bayesian Predictive Modeling, Spatial Statistics (R, GIS, SQL)"
 
 [[experience]]
-  title = "Assistant Director, Center for Spoken Language Understanding"
-  company = "Oregon Health & Science University"
-  company_url = "https://www.ohsu.edu/"
-  location = "Portland, Oregon"
-  date_start = "2017-09-01"
-  date_end = "2018-10-19"
-  description = """ """
+  title = "Crime Analyst Intern"
+  company = "Toronto Police Service, Analytics and Innovation Unit"
+  company_url = "https://www.torontopolice.on.ca/businessintelanalytics/"
+  location = "Toronto, Ontario"
+  date_start = '2020-01-01'
+  date_end = '2020-03-16'
+  description = "Spatial Analysis (GIS, R, Excel)"
 
 [[experience]]
-  title = "Assistant Professor, Pediatrics"
-  company = "Oregon Health & Science University"
-  company_url = "https://www.ohsu.edu/"
-  location = "Portland, Oregon"
-  date_start = "2012-01-01"
-  date_end = "2017-06-30"
-  description = """ """
-
-[[experience]]
-  title = "Senior Research Associate"
-  company = "Oregon Health & Science University"
-  company_url = "https://www.ohsu.edu/"
-  location = "Portland, Oregon"
-  date_start = "2010-03-01"
-  date_end = "2011-12-31"
-  description = """ """
-
-[[experience]]
-  title = "Assistant Research Professor"
-  company = "Arizona State University"
-  company_url = "https://www.asu.edu/"
-  location = "Tempe, Arizona"
-  date_start = "2008-08-01"
-  date_end = "2010-02-01"
-  description = """ """
+  title = "Transcription and Data Analysis Assistant"
+  company = "Innovation Hub"
+  company_url = "http://blogs.studentlife.utoronto.ca/innovationhub/"
+  location = "Toronto, Ontario"
+  date_start = '2018-12-01'
+  date_end = '2019-03-01'
+  description = "Design Thinking, User Experience Research"
 
 +++

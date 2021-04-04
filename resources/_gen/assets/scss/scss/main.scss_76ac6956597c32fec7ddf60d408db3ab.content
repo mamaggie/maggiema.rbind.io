@@ -9192,7 +9192,6 @@ a:hover {
 
 .navbar {
   box-shadow: none;
-  text-transform: uppercase;
   letter-spacing: .1em;
   font-size: .9em; }
 
@@ -9226,7 +9225,7 @@ a:hover {
   height: 2px; }
 
 .navbar-nav a.nav-link:hover:after {
-  width: 80%; }
+  width: 15%; }
 
 /* home page */
 .portrait-title h2 {
