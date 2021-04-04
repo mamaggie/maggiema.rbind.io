@@ -31,6 +31,7 @@ subtitle = ""
   # Background image.
   image = "helloworld.gif"  # Name of image in `static/img/`.
   image_darken = 0  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
+  align = 'center'
 
   # Text color (true=light or false=dark).
   text_color_light = true
@@ -39,6 +40,11 @@ subtitle = ""
   # Customize the section spacing. Order is top, right, bottom, left.
   padding = ['30%', '0']
   position = 'fixed'
+  align = 'center'
+  background-size = 'contain'
+  webkit-background-size = 'contain'
+  moz-background-size = 'contain'
+  o-background-size = 'contain'
 
 [advanced]
  # Custom CSS.

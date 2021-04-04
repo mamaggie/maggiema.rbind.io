@@ -8,9 +8,8 @@
         <img src="{{ printf "/img/%s" site.Params.logo | relURL }}" alt="{{ site.Title }}">
         {{- else -}}
         <!-- {{ if .IsHome }}{{- "Welcome! ☺" -}}{{- end -}} -->
-        {{ if .IsHome }}{{- "Maggie Ma 🍋" -}}{{- end -}}
-        <!-- {{ if not .IsHome }}{{- site.Title -}}{{- end -}} -->
-        {{ if not .IsHome }}{{- "Maggie Ma ☺" -}}{{- end -}}
+        {{ if .IsHome }}{{- "Maggie Ma 🍊 " -}}{{- end -}}
+        {{ if not .IsHome }}{{- site.Title -}}{{- end -}}
         {{- end -}}
       </a>
       {{ if or site.Menus.main .IsTranslated }}
