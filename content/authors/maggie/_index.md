@@ -23,7 +23,7 @@ email: ""
 interests:
 - Spatial Statistics
 - Predictive Modeling
-- Data visualization
+- Data Visualization
 - Machine Learning
 
 #name: Maggie Ma
