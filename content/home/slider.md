@@ -36,7 +36,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"The analytical perspective you bring into the project is invaluable. Fantastic job with the likert chart.\" <br> -- *Formal Teammate*"
+  content = "\"Maggie was a brilliant student. She was independent, curious, and always willing to tackle problems in ways that produced meaningful - but practical - solutions.\" <br> -- *Dr. [M. Widener](http://thinkingspatial.com), academic supervisor, developing web map class*"
   align = "left"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -50,7 +50,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"Maggie I love your thoughtful approach to data and storytelling. You are a great voice for the team. \" <br> -- *Formal Teammate*"
+  content = "\"The analytical perspective you bring into the project is invaluable. Fantastic job with the likert chart.\" <br> -- *Former Teammate*"
   align = "right"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -64,7 +64,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"You have worked reliably and to a consistently high standard throughout this semester.\" <br> *Formal Teammate*"
+  content = "\"Maggie I love your thoughtful approach to data and storytelling. You are a great voice for the team. \" <br> -- *Former Teammate*"
   align = "center"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -78,7 +78,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"Maggie, I love that you offer counter points during major group discussions. Also ur data visualization on the last submission was amazing.\" <br> -- *Formal Teammate*"
+  content = "\"You have worked reliably and to a consistently high standard throughout this semester.\" <br> -- *Former Teammate*"
   align = "left"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -92,7 +92,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"Maggie's effort towards correspondence with the client and maintaining the survey have been important leading up to the presentation. She has also contributed exceptional effort towards completing the persona, a component of the deliverable that was proposed by her.\" <br> -- *Formal Teammate*"
+  content = "\"Maggie, I love that you offer counter points during major group discussions. Also ur data visualization on the last submission was amazing.\" <br> -- *Former Teammate*"
   align = "right"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -106,7 +106,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"To be updated\""
+  content = "\"Maggie's effort towards correspondence with the client and maintaining the survey have been important leading up to the presentation. She has also contributed exceptional effort towards completing the persona, a component of the deliverable that was proposed by her.\" <br> -- *Former Teammate*"
   align = "center"
 
   overlay_color = "#404040"  # An HTML color value.
