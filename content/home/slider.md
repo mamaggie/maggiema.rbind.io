@@ -36,17 +36,17 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"Maggie was a brilliant student. She was independent, curious, and always willing to tackle problems in ways that produced meaningful - but practical - solutions.\" <br> -- *Dr. [M. Widener](http://thinkingspatial.com), academic supervisor, developing web map class*"
+  content = "\"Maggie was a brilliant student. She was independent, curious, and always willing to tackle problems in ways that produced meaningful - but practical - solutions.\" <br> -- *Dr. [M. Widener](http://thinkingspatial.com), academic supervisor,* <br>*developing web map class*"
   align = "left"
 
   overlay_color = "#404040"  # An HTML color value.
   overlay_img = "headers/banana.jpg"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.4  # Darken the image. Value in range 0-1.
 
-  cta_label = "see my projects"
-  cta_url = "/projects"
-  cta_icon_pack = "fas"
-  cta_icon = "walking"
+  cta_label = ""
+  cta_url = ""
+  cta_icon_pack = ""
+  cta_icon = ""
 
 [[item]]
   title = ""
