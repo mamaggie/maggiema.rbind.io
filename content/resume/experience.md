@@ -42,7 +42,11 @@ date_format = "January 2006"
   location = 'Toronto, Ontario'
   date_start = '2019-04-30'
   date_end = '2021-01-31'
-  description = "Bayesian Predictive Modeling, Spatial Statistics (R, GIS, SQL)"
+  description = """ Languages used: R, GIS, SQL, JavaScript, HTML, CSS
+  * Bayesian Predictive Modeling
+  * Spatial Statistics
+  * Data Visualization
+  * Database Management"""
 
 [[experience]]
   title = "Crime Analyst Intern"
@@ -51,7 +55,8 @@ date_format = "January 2006"
   location = "Toronto, Ontario"
   date_start = '2020-01-01'
   date_end = '2020-03-16'
-  description = "Spatial Analysis (GIS, R, Excel)"
+  description = """ Tools used: GIS, R, Excel
+  * Spatial Analysis"""
 
 [[experience]]
   title = "Transcription and Data Analysis Assistant"
