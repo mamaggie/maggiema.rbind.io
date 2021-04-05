@@ -106,7 +106,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"It [was] so well-organized and Alison is so awesome as an instructor.\""
+  content = "\"To be updated\""
   align = "center"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -120,7 +120,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"Alison is excellent!\""
+  content = "\"To be updated\""
   align = "left"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -134,7 +134,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"Alison is an absolutely amazing presenter! Really really enjoyed the workshop. Thank you!\""
+  content = "\"To be updated\""
   align = "right"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -148,7 +148,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"Alison was a good presenter, trying to make difficult topics understandable and having good energy and enthusiasm for the subject matter.\""
+  content = "\"To be updated\""
   align = "center"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -162,7 +162,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"This was an inspiring workshop! I look forward to trying out what I learned in real life!\""
+  content = "\"To be updated\""
   align = "left"
 
   overlay_color = "#404040"  # An HTML color value.
