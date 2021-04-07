@@ -1,0 +1,69 @@
+---
+title: Movies Critics Loved, But Audience Really Didn't
+author: Maggie Ma
+date: '2021-02-05'
+slug: []
+categories:
+  - r
+  - data viz
+  - recent
+tags:
+  - data viz
+  - r
+  - recent
+summary: 'Examining IMDb, Rotten Tomatoes, and MetaCritics Scores for Movies Shot in Toronto'
+authors: []
+external_link: ''
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+url_code: ''
+url_pdf: ''
+url_slides: ''
+url_video: ''
+slides: ''
+---
+## Main Takeaway  
+  
+
+```{r}
+movies3 <- read.csv2("/Users/maggiema/Documents/Dropped Out Courses/STA313/Assignment 1/movies3.csv", sep = ',')
+
+for (i in 1:nrow(movies3)) {
+  if (is.na(movies3$nomination[i]) == TRUE) {
+    movies3$nomination[i] = 0
+  }
+
+}
+
+annotation <- data.frame(
+  x = c(-35, 50), 
+  y = c(1976, 1976),
+  label = c('Critics Loves', 'Audience Loves')
+)
+annotation2 <- data.frame(
+  x = c(-29.5, 50), 
+  y = c(1974, 1974),
+  label = c('(Higher Rotten Tomato Score)', '(Higher IMDb Score) ')
+)
+
+library(ggrepel) # for geom_label_repel
+library(ggthemes) # for theme_wsj()
+ggplot(movies3, aes(x = viewLOVE, y = year)) + 
+  geom_point(aes(
+                                 col = meta, 
+                                 size = nomination),
+                             #position = position_jitter( w = 0.7), 
+                             alpha = 0.7, 
+             position = 'jitter') + 
+  geom_label_repel(data = subset(movies3, nomination > 100 | viewLOVE < -25 | viewLOVE > 50),aes(label = title), nudge_y = 0.7) +
+  scale_color_manual(values = c('#D3BA68', '#D5695D', '#65A478', 'darkgrey'), name = 'Metacritic Score') + theme_wsj() + 
+  scale_size(range = c(2, 25), name = 'Nominations') + 
+  labs(title = 'Movies Critics Loved, But Audiences Really Didn\'t', subtitle = 'Discrepency in audience IMDb rating & critics Rotten Tomatoes score',
+       caption = 'Data source: Wikipedia, Rotten Tomatoes, IMDb, Metacritics') + 
+  geom_vline(xintercept = 0) + geom_text(data = annotation, aes(x = x, y = y, label = label),
+                                                                color = 'orange', size = 5, fontface = 'bold') + geom_text(data = annotation2, aes(x = x, y = y, label = label),
+            color = 'orange', size = 5, fontface = 'bold')
+```
+
