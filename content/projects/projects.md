@@ -10,7 +10,7 @@ content:
   - name: recent
     tag: recent
   - name: R
-    tag: R
+    tag: r
   - name: maps
     tag: maps
   - name: regression

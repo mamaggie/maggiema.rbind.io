@@ -25,6 +25,10 @@ url_slides: ''
 url_video: ''
 slides: ''
 ---
+![](https://raw.githubusercontent.com/mamaggie/maggiema.rbind.io/main/content/project/2021-02-05-movies-critics-loved-but-audience-really-didn-t/featured.jpg)
+
+# Main Takeaway  
+
 **This visualization is a passion project that aims to show the discrepancy between critic’s opinions and audience’s opinions on the same movies, generated from a list of movies filmed in Toronto.** Data were scraped from Wikipedia, IMDb, Metacritics, and Rotten Tomatoes website. The visualization uses three main scores:  
 
 * [IMDb ratings](https://developer.imdb.com/?ref=ft_ds), voted by the general audience;  
@@ -34,9 +38,7 @@ slides: ''
 The graph also depicts the number of nominations through the area of the circles.  
 Movies that  are loved by critics but disliked by the audience (on the left side of the graph), receive more nominations than movies which are loved by audience and disliked by critics. Titles of movies on the extreme sides of the scale were also provided for reference. 
 
-![](https://raw.githubusercontent.com/mamaggie/maggiema.rbind.io/main/content/project/2021-02-05-movies-critics-loved-but-audience-really-didn-t/featured.jpg)
-
-## Mini Tutorial  
+# Mini Tutorial  
 
 ### Data  
 Data were scraped from multiple sources. Scraped raw data can be found [here](https://github.com/mamaggie/maggiema.rbind.io/blob/main/content/project/2021-02-05-movies-critics-loved-but-audience-really-didn-t/moviesTO_raw.csv).   
@@ -56,6 +58,8 @@ library(ggthemes)
 head(movies, 5)
 ```
   
+### Code  
+
 Here is what you need to do to make the visualization happen:  
 
 ```{r analysis, echo = TRUE, warning=FALSE, message=FALSE,}
