@@ -50,7 +50,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"The analytical perspective you bring into the project is invaluable. Fantastic job with the likert chart.\" <br> -- *Former Teammate*"
+  content = "\"Maggie has a broad range of abilities in biostatistics, GIS, and the health sciences. It is always a pleasure working with her.\"  -- *Dr. [P. Brown](http://pbrown.ca), principal investigator/supervisor,* <br> *[Centre for Global Health Research](http://www.cghr.org)*"
   align = "right"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -64,7 +64,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"Maggie I love your thoughtful approach to data and storytelling. You are a great voice for the team. \" <br> -- *Former Teammate*"
+  content = "\"The analytical perspective you bring into the project is invaluable. Fantastic job with the likert chart.\" <br> -- *Former Teammate*"
   align = "center"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -78,7 +78,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"You have worked reliably and to a consistently high standard throughout this semester.\" <br> -- *Former Teammate*"
+  content = "\"Maggie I love your thoughtful approach to data and storytelling. You are a great voice for the team. \" <br> -- *Former Teammate*"
   align = "left"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -92,7 +92,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"Maggie, I love that you offer counter points during major group discussions. Also ur data visualization on the last submission was amazing.\" <br> -- *Former Teammate*"
+  content = "\"You have worked reliably and to a consistently high standard throughout this semester.\" <br> -- *Former Teammate*"
   align = "right"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -106,7 +106,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"Maggie's effort towards correspondence with the client and maintaining the survey have been important leading up to the presentation. She has also contributed exceptional effort towards completing the persona, a component of the deliverable that was proposed by her.\" <br> -- *Former Teammate*"
+  content = "\"Maggie, I love that you offer counter points during major group discussions. Also ur data visualization on the last submission was amazing.\" <br> -- *Former Teammate*"
   align = "center"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -120,7 +120,7 @@ height = "350px"
 
 [[item]]
   title = ""
-  content = "\"To be updated\""
+  content = "\"Maggie's effort towards correspondence with the client and maintaining the survey have been important leading up to the presentation. She has also contributed exceptional effort towards completing the persona, a component of the deliverable that was proposed by her.\" <br> -- *Former Teammate*"
   align = "left"
 
   overlay_color = "#404040"  # An HTML color value.
@@ -132,47 +132,47 @@ height = "350px"
   cta_icon_pack = "fas"
   cta_icon = "walking"
 
-[[item]]
-  title = ""
-  content = "\"To be updated\""
-  align = "right"
+# [[item]]
+#  title = ""
+#  content = "\"To be updated\""
+#  align = "right"
 
-  overlay_color = "#404040"  # An HTML color value.
-  overlay_img = "headers/mandarine.jpg"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.4  # Darken the image. Value in range 0-1.
+#  overlay_color = "#404040"  # An HTML color value.
+#  overlay_img = "headers/mandarine.jpg"  # Image path relative to your #`static/img/` folder.
+#  overlay_filter = 0.4  # Darken the image. Value in range 0-1.
 
-  cta_label = "see my projects"
-  cta_url = "/projects"
-  cta_icon_pack = "fas"
-  cta_icon = "walking"
+#  cta_label = "see my projects"
+#  cta_url = "/projects"
+#  cta_icon_pack = "fas"
+#  cta_icon = "walking"
 
-[[item]]
-  title = ""
-  content = "\"To be updated\""
-  align = "center"
+#[[item]]
+#  title = ""
+#  content = "\"To be updated\""
+#  align = "center"
 
-  overlay_color = "#404040"  # An HTML color value.
-  overlay_img = "headers/lemon.jpg"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.5  # Darken the image. Value in range 0-1.
+#  overlay_color = "#404040"  # An HTML color value.
+#  overlay_img = "headers/lemon.jpg"  # Image path relative to your #`static/img/` folder.
+#  overlay_filter = 0.5  # Darken the image. Value in range 0-1.
 
-  cta_label = "see my projects"
-  cta_url = "/projects"
-  cta_icon_pack = "fas"
-  cta_icon = "walking"
+#  cta_label = "see my projects"
+#  cta_url = "/projects"
+#  cta_icon_pack = "fas"
+#  cta_icon = "walking"
 
-[[item]]
-  title = ""
-  content = "\"To be updated\""
-  align = "left"
+#[[item]]
+#  title = ""
+#  content = "\"To be updated\""
+#  align = "left"
 
-  overlay_color = "#404040"  # An HTML color value.
-  overlay_img = "headers/apricot.jpg"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.4  # Darken the image. Value in range 0-1.
+#  overlay_color = "#404040"  # An HTML color value.
+#  overlay_img = "headers/apricot.jpg"  # Image path relative to your #`static/img/` folder.
+#  overlay_filter = 0.4  # Darken the image. Value in range 0-1.
 
-  cta_label = "see my projects"
-  cta_url = "/projects"
-  cta_icon_pack = "fas"
-  cta_icon = "walking"
+#  cta_label = "see my projects"
+#  cta_url = "/projects"
+#  cta_icon_pack = "fas"
+#  cta_icon = "walking"
 
 
 +++
