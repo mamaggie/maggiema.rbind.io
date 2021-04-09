@@ -1,0 +1,28 @@
+---
+title: Measuring the Effects of Key Factors Influencing the Success of Retail Businesses
+author: R package build
+date: '2020-04-01'
+slug: []
+links:
+- icon: file-pdf
+  icon_pack: far
+  name: research report
+  url: ../../pdf/retail-business-report.pdf
+categories:
+  - school
+  - writing sample
+tags:
+  - research
+  - simulation
+subtitle: ''
+summary: 'An independent research project conducted using COBWEB, a Java based simulation software.'
+authors: []
+featured: no
+disable_jquery: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+projects: []
+---
+![](https://raw.githubusercontent.com/mamaggie/maggiema.rbind.io/main/content/project/2021-02-05-movies-critics-loved-but-audience-really-didn-t/featured.jpg)
