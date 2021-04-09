@@ -13,8 +13,8 @@ content:
     tag: r
   - name: maps
     tag: maps
-  - name: regression
-    tag: regression
+  - name: models/inla
+    tag: inla
   - name: data viz
     tag: data viz
   - name: research
