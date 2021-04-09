@@ -69,4 +69,8 @@ the success of physical retail stores. Similar retail businesses located closer 
 probability of success than a stand-alone business. As for similar businesses close to each other, having
 more sales square footage will more likely to be successful than a smaller sized store.  
 
+## Growth  
+
+This research was conducted for a third year year-long research course. Prior to this course, I had little exposure to conducting my original research from start to finish under the supervision of a faculty supervisor. Needless to say, my research skills improved significantly through this experience. I also gained the understanding that research is an iterative process, especially with regards to simulation models, as it involves a significant amount of trail and error. Last but not least, I have gained valuable mentorship experience helping high school students learn COBWEB.  
+
 *Read full report [here](../../pdf/retail-business-report.pdf)*
