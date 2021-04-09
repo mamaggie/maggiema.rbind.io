@@ -1,0 +1,50 @@
+---
+title: Health Canada Air Pollution Data Availability Visualization
+author: Maggie Ma
+date: '2020-07-30'
+slug: []
+tags:
+  - interactive web map
+  - html
+  - mapbox
+  - javascript
+  - css
+  - maps
+  - data viz
+summary: Interactive dashboard displaying available air pollution measurements over 20 years for internal research use
+authors: []
+external_link: ''
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+url_code: ''
+url_pdf: ''
+url_slides: ''
+url_video: ''
+slides: ''
+---
+
+<iframe src="https://mamaggie.github.io/pollutionnumbers.html" style="width:106%; height:600px;"></iframe>
+
+<p>This map was developed for internal use and thus is less intuitive than the others.
+  The purpose of this map is for researchers in the office at St. Michael's Hospital
+to understand where pollution data exists across Canada. </p>
+
+<h3>Problem At Hand</h3>
+<p>Researchers and statisticians in the office were tasked to run complex spatial prediction models
+on pollution levels in different cities. These models are extremely time-consuming and could take up to 7 days to run
+for one city. Unfortunately, data collection efforts over the past 20 years were inconsistent,
+highly dependent on locations, and varied greatly by pollutants. The result of a model is less useful
+if insufficient data were collected to train the odels. In order to help statisticians conduct research efficiently and
+prioritize cities with the richest amount of data, this visualization was born.</p>
+
+<h3>Functionalities</h3>
+<ul>
+<li>Red dots are Health Canada air pollution stations. Locations of stations vary by year</li>
+<li>Tags across the bottom panel allows you to zoom to a new city without knowledge of Canadian geographies.</li>
+<li>Time slider on the top left hand corner allows you to view data availability across the years.</li>
+<li>Pollutant on the top right hand corner allows you to check data avialbility for each pollutant.
+  The number represents aggregated pollutant measurement in a given year, enabling users to gain
+  a basic understanding of severity of pollution for each pollutant at any station.</li>
+</ul>
