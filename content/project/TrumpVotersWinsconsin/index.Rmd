@@ -1,12 +1,13 @@
 ---
 title: Trump Voters in Winsconsin
 author: R package build
-date: '2020-08-12'
+date: '2020-12-08'
 slug: []
 categories:
   - school
   - sample analysis
   - bayesian predictive modeling
+  - code
 tags:
   - r
   - inla
@@ -30,13 +31,17 @@ projects: []
 (load("TrumpRes.RData"))
 ```
 
-**Introduction**  
 The research question of interest involves the factors influencing voters in Winsconsin to vote for Trump in the 2016 U.S. election. In this research, we are mainly interested in demographic factors such as race and rurality. 
-It is hypothesized that there exists an urban/rural and racial phenomenon for Trumpism; Trump appealed to White voters and areas with low population density in 2016, with significant spatial variation.  
+It is hypothesized that there exists an urban/rural and racial phenomenon for Trumpism; such that Trump appealed to White voters and areas with low population density in 2016, with significant spatial variation.  
   
-**Methods**  
-In order to fit a statistically robust model that quantifies the problem, data collected from the 2016 election results in Winsconsin, as collected and published on Harvard Dataverse, were used to analyze the profile of Trump voters in Winsconsin. We chose to run the model on the sub-county level because county level data is too aggregated to find significant results and census tract level data is too detailed and create unnecessary noises. 
-As we are interested in finding spatial variations in Trump supporter along with some demographic factors, a bayesian spatial model BYM with binomial distribution was fitted to the data, as shown below:  
+## A Besag York Mollié Bayesian Hierarchical Spatial Model  
+
+In order to fit a statistically robust model that quantifies the problem, data collected from the 2016 election results in Winsconsin, as collected and published on [Harvard Dataverse](https://dataverse.harvard.edu), were used to analyze the profile of Trump voters in Winsconsin. Scraped data in .RData format can also be downloaded in my  [github repo](https://github.com/mamaggie/maggiema.rbind.io/blob/main/content/project/TrumpVotersWinsconsin/wisconsin.rdata).  
+  
+We chose to run the model on the sub-county level because county level data is too aggregated to find significant results and census tract level data is too detailed and create unnecessary noises. 
+**As we are interested in finding spatial variations in Trump supporter along with some demographic factors, a bayesian spatial model BYM with binomial distribution was constructed using [diseasemapping](http://diseasemapping.r-forge.r-project.org) R package to fit the data, as displayed below:**    
+
+![](https://raw.githubusercontent.com/mamaggie/maggiema.rbind.io/main/content/project/TrumpVotersWinsconsin/model.jpg)
 
 ```{r models, eval=FALSE, warning = FALSE, message = FALSE}
 # BYM model with sensible priors
@@ -50,20 +55,45 @@ resTrump2 = diseasemapping::bym(
   family = "binomial")
 ```
 
-![](https://raw.githubusercontent.com/mamaggie/maggiema.rbind.io/main/content/project/TrumpVotersWinsconsin/model.jpg)
   
 $Y_i$ represents the number of Trump voters, $N_i$ represents the total number of voters, and $\rho_i$ is the probability they vote for Trump. For each region, the logit probability depends on covariates $X_i\beta$ and random effect $U_i$, $\mu$ being the intercept. The random effect $U_i$ consists two standard diviation parameters: spatial ($\sigma^2$) and independent ($\tau^2$). $X_i$ is a vector of covariates including proportion of residents in the sub-county who are white (porpWhite), proportion of residents in the sub-county who are Indigenous (propInd), and population density (logPdens). Population density factor was scaled using log() in order to be on the same scale as the other covariates.  
 
 Penalized complexity priors were chosen for standard deviation, which includes both non-spatial and spatial parameters, as c(0.5, 0.05), meaning the probability of standard deviation is bigger than 0.5 is 5%. And the penalized complexity prior for spatial proportion (propSpatial) is c(0.2, 0.5), meaning the median of the spatial proportion is 0.2, assuming a rougher surface than it is smooth. Prior for $beta$ was left at INLA default. We chose the above prior distribution to encourage the model to be boring and surface to be flat; by doing so, we can learn truly from the data whether there is anything significantly correlated.  
   
-**Results**  
+## Results  
 
-Table 1 below shows the parameter posterior means and 95% credible intervals in logged odds ratios. This table provides valuable information on the significance of variables. If the mean is equal to, or the credible interval includes, 0, the corresponding variable is not significant. From this table, we can conclude that population density and proportion of indigenous people in a sub-county have significant negative correlation with Trump votes turnout, while proportion of white people in a sub-county level is strongly correlated with Trump votes turnout in a positive way. The overall standard deviation is 0.32, and most of the variance is being explained by the spatial proportion, around 96%. There is a strong spatial effect for Trump voters in Winsconsin.  
+### Log Lative Risk and Odds Ratios Tables  
+
+```{r tables, eval=FALSE}
+# log relative risk (logged odds ratios) table
+temp <- resTrump2$parameters$summary[,c(1,3,5)] 
+table1 <- temp %>%
+  kableExtra::kbl(
+    caption = "Figure 1. Parameter Posterior Means and 95% Credible Intervals 
+    (Log Odds)", booktabs = T, digits = 3) %>%
+  kableExtra::kable_classic(full_width = F, html_font = "Cambria") %>%
+  kableExtra::kable_styling(latex_options = c("HOLD_position", "striped"))
+
+# odds ratios table
+logOddsMat = resTrump2$parameters$summary[,c(4,3,5)]
+oddsMat = exp(logOddsMat)
+oddsMat[1,] = oddsMat[1,]/(1 + oddsMat[1, ])
+rownames(oddsMat)[1] = 'Baseline prob'
+table2 <- oddsMat %>%
+  kableExtra::kbl(
+    caption = "Figure 2. BYM Model Results From Voting Data (Odds Ratio)", 
+    booktabs = T, digits = 3) %>%
+  kableExtra::kable_classic(full_width = F, html_font = "Cambria") %>%
+  kableExtra::kable_styling(latex_options = c("HOLD_position", "striped"))
+```
+
 ![](https://raw.githubusercontent.com/mamaggie/maggiema.rbind.io/main/content/project/TrumpVotersWinsconsin/tables.jpg)
+
+Table 1 shows the parameter posterior means and 95% credible intervals in logged odds ratios. This table provides valuable information on the significance of variables. If the mean is equal to, or the credible interval includes, 0, the corresponding variable is not significant. From this table, we can conclude that population density and proportion of indigenous people in a sub-county have significant negative correlation with Trump votes turnout, while proportion of white people in a sub-county level is strongly correlated with Trump votes turnout in a positive way. The overall standard deviation is 0.32, and most of the variance is being explained by the spatial proportion, around 96%. There is a strong spatial effect for Trump voters in Winsconsin.  
 
 Table 2 is the IQR version of table 1, displaying the parameters in odds ratio. We can conclude that a 1% increase in the proportion of white residents on the sub-county level will result in a 4.1% increase in Trump votes, or a 3.2 - 5.4% increase with 95% confidence interval. A 1% increase in the proportion of indigenous residents only result in a 0.45% increase in Trump votes and a 1 standard deviation increase in population density results in a 0.92% increase in Trump votes. Figure 1 and 2 display the prior and posterior density distribution for overall standard deviation and spatial proportion.  
 
-
+### Prior and Posterior Distributions  
 
 ```{r q1priorandposterior, echo=TRUE, fig.width=6, fig.height=3}
 # prior and posteriors for SD
@@ -86,7 +116,7 @@ legend('topright', lty = 1, col = c('black', 'red'),
 ```
 
 
-Figure 3 and 4 are the random effect map and exceedance probability map, respectively. In figure 3, there are big random effects on the more red areas on the scale, meaning these variations are not results of the covariates. Since there are a lot of uncertainty in figure 3, figure 4- the exceedance probability map displays the probability that the random effect is causing more than 1/4th of excess Trump voting. We know there is excess Trump voting for areas in red, there is not excess Trump voting for areas in blue, and we are unsure for the areas in color that are in between.  
+### Random Effect and Exceedance Probability Maps  
 
 ```{r q1maps, echo = TRUE, fig.width=6, fig.height = 4, eval = FALSE}
 theColTrump = mapmisc::colourScale(wisconsinCsubm$propTrump, col = "RdBu", 
@@ -137,7 +167,9 @@ title(main = 'Figure 4. Exceedance Probability Map ', line = -1.5)
 
 ```
 
-![](https://raw.githubusercontent.com/mamaggie/maggiema.rbind.io/main/content/project/TrumpVotersWinsconsin/maps.jpg)
+![](https://raw.githubusercontent.com/mamaggie/maggiema.rbind.io/main/content/project/TrumpVotersWinsconsin/maps.jpg)  
 
-**Discussion**  
+Figure 3 and 4 are the random effect map and exceedance probability map, respectively. In figure 3, there are big random effects on the more red areas on the scale, meaning these variations are not results of the covariates. Since there are a lot of uncertainty in figure 3, figure 4- the exceedance probability map displays the probability that the random effect is causing more than 1/4th of excess Trump voting. We know there is excess Trump voting for areas in red, there is not excess Trump voting for areas in blue, and we are unsure for the areas in color that are in between.  
+
+## Discussion  
 Overall, demographic factors such as population density, proportion of white or indigenous people on sub-county level, as well as spatial effect are significant with Trump votes turnout in Wisconsin for the 2016 U.S. election. A greater proportion of residents who are white results in an increase in the proportion of Trump votes, a greater of residents who are indigenous or in more populated areas results in a decrease in the proportion of Trump votes. There are also a great amount of variation explained by the spatial effect, meaning areas closer togethre are likely to have similar proportion of Trump votes.  

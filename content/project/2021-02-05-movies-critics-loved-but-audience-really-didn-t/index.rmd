@@ -4,9 +4,8 @@ author: Maggie Ma
 date: '2021-02-05'
 slug: []
 categories:
-  - r
-  - data viz
-  - recent
+  - passion project
+  - code
 tags:
   - data viz
   - r
@@ -36,7 +35,7 @@ slides: ''
 * and [Metacritic scores](https://www.metacritic.com), voted also by critics but the scores are weighted based on the reputation of critics, therefore more reputable.   
 
 The graph also depicts the number of nominations through the area of the circles.  
-Movies that  are loved by critics but disliked by the audience (on the left side of the graph), receive more nominations than movies which are loved by audience and disliked by critics. Titles of movies on the extreme sides of the scale were also provided for reference. 
+Movies that  are loved by critics but disliked by the audience (on the left side of the graph), receive more nominations than movies which are loved by audience and disliked by critics. Titles of movies on the extreme sides of the scale were also provided for reference.
 
 # Mini Tutorial  
 
@@ -53,11 +52,11 @@ We need three packages: **ggplot2** to build the graph, **ggrepel** for labels, 
 
 ```{r showdata, echo = TRUE}
 library(ggplot2)
-library(ggrepel) 
-library(ggthemes) 
+library(ggrepel)
+library(ggthemes)
 head(movies, 5)
 ```
-  
+
 ### Code  
 
 Here is what you need to do to make the visualization happen:  
@@ -79,7 +78,7 @@ annotation <- data.frame(
   label = c('Critics Loves', 'Audience Loves')
 )
 annotation2 <- data.frame(
-  x = c(-29.5, 50), 
+  x = c(-29.5, 50),
   y = c(1974, 1974),
   label = c('(Higher Rotten Tomato Score)', '(Higher IMDb Score) ')
 )
@@ -88,25 +87,25 @@ annotation2 <- data.frame(
 ```{r plotting, eval = FALSE}
 # Plot!
 ggplot(movies, aes(x = viewLOVE, y = year)) + #refer to data
-  geom_point(aes(ol = meta, size = nomination), 
+  geom_point(aes(ol = meta, size = nomination),
              alpha = 0.7, #transparency
-             position = 'jitter') + 
+             position = 'jitter') +
   # label name of movies with more than 100 nominations and a big discrepancy in critics vs. audience scores
-  geom_label_repel( 
+  geom_label_repel(
     data = subset(movies, nomination > 100 | viewLOVE < -25 | viewLOVE > 50),
-    aes(label = title), nudge_y = 0.7) + 
-  scale_color_manual(values = c('#D3BA68', '#D5695D', '#65A478', 'darkgrey'), 
-                     name = 'Metacritic Score') + 
+    aes(label = title), nudge_y = 0.7) +
+  scale_color_manual(values = c('#D3BA68', '#D5695D', '#65A478', 'darkgrey'),
+                     name = 'Metacritic Score') +
   # pre-set plot theme: Wall Street Journal Style
-  theme_wsj() + 
-  scale_size(range = c(2, 25), name = 'Nominations') + 
-  labs(title = 'Movies Critics Loved, But Audiences Really Didn\'t', 
+  theme_wsj() +
+  scale_size(range = c(2, 25), name = 'Nominations') +
+  labs(title = 'Movies Critics Loved, But Audiences Really Didn\'t',
        subtitle = 'Discrepency in audience IMDb rating & critics Rotten Tomatoes score',
-       caption = 'Data source: Wikipedia, Rotten Tomatoes, IMDb, Metacritic') + 
-  geom_vline(xintercept = 0) + 
+       caption = 'Data source: Wikipedia, Rotten Tomatoes, IMDb, Metacritic') +
+  geom_vline(xintercept = 0) +
   # add x-axis labels
-  geom_text(data = annotation, aes(x = x, y = y, label = label), 
-            color = 'orange', size = 5, fontface = 'bold') + 
+  geom_text(data = annotation, aes(x = x, y = y, label = label),
+            color = 'orange', size = 5, fontface = 'bold') +
   geom_text(data = annotation2, aes(x = x, y = y, label = label),
             color = 'orange', size = 5, fontface = 'bold')
 ```
