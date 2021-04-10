@@ -41,7 +41,13 @@ In order to fit a statistically robust model that quantifies the problem, data c
 We chose to run the model on the sub-county level because county level data is too aggregated to find significant results and census tract level data is too detailed and create unnecessary noises. 
 **As we are interested in finding spatial variations in Trump supporter along with some demographic factors, a bayesian spatial model BYM with binomial distribution was constructed using [diseasemapping](http://diseasemapping.r-forge.r-project.org) R package to fit the data, as displayed below:**    
 
-![](https://raw.githubusercontent.com/mamaggie/maggiema.rbind.io/main/content/project/TrumpVotersWinsconsin/model.jpg)
+$$
+\begin{aligned}
+Y_{i} \sim & \text{Binomial}(N_{i}, \rho_{i})\\
+\text{log}(\frac{\rho_{i}}{1-\rho_{i}}) = & \mu + \boldsymbol{X_{i}\beta} + U_i\\
+U_i \sim& BYM(\sigma^2, \tau^2)
+\end{aligned}
+$$
 
 ```{r models, eval=FALSE, warning = FALSE, message = FALSE}
 # BYM model with sensible priors
