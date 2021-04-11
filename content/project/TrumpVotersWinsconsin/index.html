@@ -45,25 +45,25 @@ U_i \sim&amp; BYM(\sigma^2, \tau^2)
 \]</span></p>
 <pre class="r"><code># BYM model with sensible priors
 resTrump2 = diseasemapping::bym(
-  trump ~ logPdens + propWhite + propInd, 
-  data = wisconsinCsubm, 
+  trump ~ logPdens + propWhite + propInd,
+  data = wisconsinCsubm,
   priorCI = list(
-              sd = c(0.5, 0.05), 
-               propSpatial = c(0.2, 0.5)), 
-  Ntrials = wisconsinCsubm$Total, 
+              sd = c(0.5, 0.05),
+               propSpatial = c(0.2, 0.5)),
+  Ntrials = wisconsinCsubm$Total,
   family = &quot;binomial&quot;)</code></pre>
 <p><span class="math inline">\(Y_i\)</span> represents the number of Trump voters, <span class="math inline">\(N_i\)</span> represents the total number of voters, and <span class="math inline">\(\rho_i\)</span> is the probability they vote for Trump. For each region, the logit probability depends on covariates <span class="math inline">\(X_i\beta\)</span> and random effect <span class="math inline">\(U_i\)</span>, <span class="math inline">\(\mu\)</span> being the intercept. The random effect <span class="math inline">\(U_i\)</span> consists two standard diviation parameters: spatial (<span class="math inline">\(\sigma^2\)</span>) and independent (<span class="math inline">\(\tau^2\)</span>). <span class="math inline">\(X_i\)</span> is a vector of covariates including proportion of residents in the sub-county who are white (porpWhite), proportion of residents in the sub-county who are Indigenous (propInd), and population density (logPdens). Population density factor was scaled using log() in order to be on the same scale as the other covariates.</p>
-<p>Penalized complexity priors were chosen for standard deviation, which includes both non-spatial and spatial parameters, as c(0.5, 0.05), meaning the probability of standard deviation is bigger than 0.5 is 5%. And the penalized complexity prior for spatial proportion (propSpatial) is c(0.2, 0.5), meaning the median of the spatial proportion is 0.2, assuming a rougher surface than it is smooth. Prior for <span class="math inline">\(beta\)</span> was left at INLA default. We chose the above prior distribution to encourage the model to be boring and surface to be flat; by doing so, we can learn truly from the data whether there is anything significantly correlated.</p>
+<p>Penalized complexity priors were chosen for standard deviation, which includes both non-spatial and spatial parameters, as c(0.5, 0.05), meaning the probability of standard deviation is bigger than 0.5 is 5%. And the penalized complexity prior for spatial proportion (propSpatial) is c(0.2, 0.5), meaning the median of the spatial proportion is 0.2, assuming a rougher surface than it is smooth. Prior for <span class="math inline">\(\beta\)</span> was left at INLA default. We chose the above prior distribution to encourage the model to be boring and surface to be flat; by doing so, we can learn truly from the data whether there is anything significantly correlated.</p>
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>
 <div id="log-lative-risk-and-odds-ratios-tables" class="section level3">
 <h3>Log Lative Risk and Odds Ratios Tables</h3>
 <pre class="r"><code># log relative risk (logged odds ratios) table
-temp &lt;- resTrump2$parameters$summary[,c(1,3,5)] 
+temp &lt;- resTrump2$parameters$summary[,c(1,3,5)]
 table1 &lt;- temp %&gt;%
   kableExtra::kbl(
-    caption = &quot;Figure 1. Parameter Posterior Means and 95% Credible Intervals 
+    caption = &quot;Figure 1. Parameter Posterior Means and 95% Credible Intervals
     (Log Odds)&quot;, booktabs = T, digits = 3) %&gt;%
   kableExtra::kable_classic(full_width = F, html_font = &quot;Cambria&quot;) %&gt;%
   kableExtra::kable_styling(latex_options = c(&quot;HOLD_position&quot;, &quot;striped&quot;))
@@ -75,7 +75,7 @@ oddsMat[1,] = oddsMat[1,]/(1 + oddsMat[1, ])
 rownames(oddsMat)[1] = &#39;Baseline prob&#39;
 table2 &lt;- oddsMat %&gt;%
   kableExtra::kbl(
-    caption = &quot;Figure 2. BYM Model Results From Voting Data (Odds Ratio)&quot;, 
+    caption = &quot;Figure 2. BYM Model Results From Voting Data (Odds Ratio)&quot;,
     booktabs = T, digits = 3) %&gt;%
   kableExtra::kable_classic(full_width = F, html_font = &quot;Cambria&quot;) %&gt;%
   kableExtra::kable_styling(latex_options = c(&quot;HOLD_position&quot;, &quot;striped&quot;))</code></pre>
@@ -86,8 +86,8 @@ table2 &lt;- oddsMat %&gt;%
 <div id="prior-and-posterior-distributions" class="section level3">
 <h3>Prior and Posterior Distributions</h3>
 <pre class="r"><code># prior and posteriors for SD
-plot(resTrump2$parameters$sd$posterior, type = &#39;l&#39;, xlim = c(0,1), 
-     xlab = &#39;sd&#39;, ylab = &#39;dens&#39;, 
+plot(resTrump2$parameters$sd$posterior, type = &#39;l&#39;, xlim = c(0,1),
+     xlab = &#39;sd&#39;, ylab = &#39;dens&#39;,
      main = &#39;Figure 1. Prior and Posterior Distribution for Standard Deviation&#39;,
      cex.main = 0.6)
 lines(resTrump2$parameters$sd$prior, col = &#39;grey&#39;)
@@ -95,9 +95,9 @@ legend(&#39;topright&#39;, lty = 1, col = c(&#39;black&#39;, &#39;grey&#39;),
        legend = c(&#39;post&#39;, &#39;prior&#39;), bty = &#39;n&#39;)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/q1priorandposterior-1.png" width="576" /></p>
 <pre class="r"><code># prior and posterior for spatial proportion
-plot(resTrump2$parameters$propSpatial$posterior, type = &#39;l&#39;, xlim = c(0,2.5), 
-     xlab = &#39;prop spatial&#39;, ylab = &#39;dens&#39;, 
-     main = &#39;Figure 2. Prior and Posterior Distribution for Spatial Proportion&#39;, 
+plot(resTrump2$parameters$propSpatial$posterior, type = &#39;l&#39;, xlim = c(0,2.5),
+     xlab = &#39;prop spatial&#39;, ylab = &#39;dens&#39;,
+     main = &#39;Figure 2. Prior and Posterior Distribution for Spatial Proportion&#39;,
      cex.main = 0.6)
 lines(resTrump2$parameters$propSpatial$prior, col = &#39;red&#39;)
 legend(&#39;topright&#39;, lty = 1, col = c(&#39;black&#39;, &#39;red&#39;),
@@ -106,56 +106,56 @@ legend(&#39;topright&#39;, lty = 1, col = c(&#39;black&#39;, &#39;red&#39;),
 </div>
 <div id="random-effect-and-exceedance-probability-maps" class="section level3">
 <h3>Random Effect and Exceedance Probability Maps</h3>
-<pre class="r"><code>theColTrump = mapmisc::colourScale(wisconsinCsubm$propTrump, col = &quot;RdBu&quot;, 
+<pre class="r"><code>theColTrump = mapmisc::colourScale(wisconsinCsubm$propTrump, col = &quot;RdBu&quot;,
                                    breaks = sort(
                                      unique(setdiff(
-                                       c(0, 1,seq(0.2,0.8, by = 0.1)), 0.5))), 
+                                       c(0, 1,seq(0.2,0.8, by = 0.1)), 0.5))),
                                    style = &quot;fixed&quot;, rev = TRUE)
-theColPop = mapmisc::colourScale(wisconsinCsubm$pdens, 
-                                 col = &quot;Spectral&quot;, 
-                                 breaks = 11, style = &quot;equal&quot;, 
+theColPop = mapmisc::colourScale(wisconsinCsubm$pdens,
+                                 col = &quot;Spectral&quot;,
+                                 breaks = 11, style = &quot;equal&quot;,
                                  transform = &quot;log&quot;, digits = 1,rev = TRUE)
 theColWhite = mapmisc::colourScale(wisconsinCsubm$propWhite,
-                                   col = &quot;Spectral&quot;, 
-                                   breaks = c(0, 0.5, 0.8, 0.9, 
-                                              seq(0.9, 1, by = 0.02)), 
+                                   col = &quot;Spectral&quot;,
+                                   breaks = c(0, 0.5, 0.8, 0.9,
+                                              seq(0.9, 1, by = 0.02)),
                                    style = &quot;fixed&quot;, rev = TRUE)
 theColInd = mapmisc::colourScale(wisconsinCsubm$propInd,
-                                 col = &quot;Spectral&quot;, breaks = seq(0, 1, by = 0.1), 
+                                 col = &quot;Spectral&quot;, breaks = seq(0, 1, by = 0.1),
                                  style = &quot;fixed&quot;, rev = TRUE)
 theBg = mapmisc::tonerToTrans(
-  mapmisc::openmap(wisconsinCm, fact = 2, path = &quot;stamen-toner&quot;), 
+  mapmisc::openmap(wisconsinCm, fact = 2, path = &quot;stamen-toner&quot;),
   col = &quot;grey30&quot;)
-theInset = mapmisc::openmap(wisconsinCm, zoom = 6, path = &quot;stamen-watercolor&quot;, 
-                            crs = mapmisc::crsMerc, 
+theInset = mapmisc::openmap(wisconsinCm, zoom = 6, path = &quot;stamen-watercolor&quot;,
+                            crs = mapmisc::crsMerc,
                             buffer = c(0, 1500, 100, 700) *1000)
 
-theColRandom = mapmisc::colourScale(resTrump2$data$random.mean, 
-                                    col = &quot;Spectral&quot;, breaks = 11, 
+theColRandom = mapmisc::colourScale(resTrump2$data$random.mean,
+                                    col = &quot;Spectral&quot;, breaks = 11,
                                     style = &quot;quantile&quot;, rev = TRUE, dec = 1)
-theColFit = mapmisc::colourScale(resTrump2$data$fitted.invlogit, col = &quot;RdBu&quot;, 
-                                 rev = TRUE, 
+theColFit = mapmisc::colourScale(resTrump2$data$fitted.invlogit, col = &quot;RdBu&quot;,
+                                 rev = TRUE,
                                  breaks = sort(unique(setdiff(
-                                   c(0,1,seq(0.2, 0.8, by = 0.1)),0.5))), 
+                                   c(0,1,seq(0.2, 0.8, by = 0.1)),0.5))),
                                  style = &quot;fixed&quot;)
 
 # plot
-mapmisc::map.new(wisconsinCsubm, 0.85) 
+mapmisc::map.new(wisconsinCsubm, 0.85)
 plot(resTrump2$data, col = theColRandom$plot, add = TRUE, lwd = 0.2)
 plot(theBg, add = TRUE, maxpixels = 10^7)
-mapmisc::legendBreaks(&quot;topright&quot;, theColRandom) 
+mapmisc::legendBreaks(&quot;topright&quot;, theColRandom)
 title(main = &#39;Figure 3. Random Effect Map&#39;, line = -1.5)
 
 mapmisc::map.new(wisconsinCsubm, 0.85)
-plot(resTrump2$data, col = theColFit$plot, add = TRUE, lwd = 0.2) 
-plot(theBg, add = TRUE, maxpixels = 10^7) 
+plot(resTrump2$data, col = theColFit$plot, add = TRUE, lwd = 0.2)
+plot(theBg, add = TRUE, maxpixels = 10^7)
 mapmisc::legendBreaks(&quot;topright&quot;, theColFit)
 title(main = &#39;Figure 4. Exceedance Probability Map &#39;, line = -1.5)</code></pre>
 <p><img src="https://raw.githubusercontent.com/mamaggie/maggiema.rbind.io/main/content/project/TrumpVotersWinsconsin/maps.jpg" /></p>
-<p>Figure 3 and 4 are the random effect map and exceedance probability map, respectively. In figure 3, there are big random effects on the more red areas on the scale, meaning these variations are not results of the covariates. Since there are a lot of uncertainty in figure 3, figure 4- the exceedance probability map displays the probability that the random effect is causing more than 1/4th of excess Trump voting. We know there is excess Trump voting for areas in red, there is not excess Trump voting for areas in blue, and we are unsure for the areas in color that are in between.</p>
+<p>Figure 3 and 4 are the random effect map and exceedance probability map, respectively. In figure 3, red areas indicate regions with large uncertainty. The variations in these regions cannot be explained properly by covariates (urban/rural and racial profile), indicating large random effects. Since there are a lot of uncertainty in figure 3, figure 4- the exceedance probability map displays the probability that the random effect is causing more than 1/4th of excess Trump voting. We know that there is excess Trump voting for areas in red, there is no excess Trump voting for areas in blue, and we are unsure for the areas in color that are in between.</p>
 </div>
 </div>
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>
-<p>Overall, demographic factors such as population density, proportion of white or indigenous people on sub-county level, as well as spatial effect are significant with Trump votes turnout in Wisconsin for the 2016 U.S. election. A greater proportion of residents who are white results in an increase in the proportion of Trump votes, a greater of residents who are indigenous or in more populated areas results in a decrease in the proportion of Trump votes. There are also a great amount of variation explained by the spatial effect, meaning areas closer togethre are likely to have similar proportion of Trump votes.</p>
+<p>Overall, demographic factors such as population density, proportion of white or indigenous people on sub-county level, as well as spatial effect are significant with Trump votes turnout in Wisconsin for the 2016 U.S. election. Regions with a greater proportion of residents who are white result in an increase in the proportion of Trump votes. In contrasts, regions with greater of residents who are indigenous or with higher population density result in a decrease in the proportion of Trump votes. There are also a great amount of variation explained by the spatial effect, meaning areas closer together are likely to have similar proportion of Trump votes.</p>
 </div>
