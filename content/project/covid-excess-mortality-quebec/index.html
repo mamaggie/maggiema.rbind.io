@@ -13,6 +13,7 @@ tags:
   - Bayesian
   - covid
   - model
+  - recent
 subtitle: ''
 summary: 'A Bayesian predictive model examining excess mortality in Québec (adjusted for seasonal variations) using inla package in R. '
 authors: []
@@ -54,11 +55,11 @@ X_{i3} &amp; = cos(2\pi t_i/182.625)\\
 X_{i4} &amp; = sin(2\pi t_i/182.625)\\
 \end{aligned}\]</span></p>
 <pre class="r"><code># R code
-INLA::inla(dead ~ sin12 + sin6 + cos12 + cos6 + 
-             f(timeIid, prior=&#39;pc.prec&#39;, param= c(log(1.2), 0.5)) + 
+INLA::inla(dead ~ sin12 + sin6 + cos12 + cos6 +
+             f(timeIid, prior=&#39;pc.prec&#39;, param= c(log(1.2), 0.5)) +
              f(timeForInla, model = &#39;rw2&#39;, prior=&#39;pc.prec&#39;, param= c(0.01, 0.5)),
-           data=xForInlaTotal, 
-           control.predictor = list(compute=TRUE, link=1), 
+           data=xForInlaTotal,
+           control.predictor = list(compute=TRUE, link=1),
            control.compute = list(config=TRUE), family=&#39;poisson&#39;)</code></pre>
 <ul>
 <li><p>In this model, the number of deaths <span class="math inline">\(Y_{i}\)</span> follows a Poisson distribution.</p></li>
@@ -87,39 +88,39 @@ excessDeaths = xPostCovidTotal$dead - xPostCovidForecast
 
 ### Total excess deaths march-may inclusive
 excessDeathsSub = excessDeaths[xPostCovidTotal$time &gt; as.Date(&quot;2020/03/01&quot;) &amp; xPostCovidTotal$time &lt; as.Date(&quot;2020/06/01&quot;), ]
-excessDeathsInPeriod = apply(excessDeathsSub, 2, sum) 
+excessDeathsInPeriod = apply(excessDeathsSub, 2, sum)
 wave1_total &lt;- round(quantile(excessDeathsInPeriod))
 
 # 70+
 ### fit a model for 70+ yo deaths in INLA
-xForInlaTotal70= xForInla[xForInla$age == &#39;70 years old and over&#39;, ] 
+xForInlaTotal70= xForInla[xForInla$age == &#39;70 years old and over&#39;, ]
 ### model
 res70 = inla(dead ~ sin12 + sin6 + cos12 + cos6 +
-             f(timeIid, prior=&#39;pc.prec&#39;, param= c(log(1.2), 0.5)) + 
+             f(timeIid, prior=&#39;pc.prec&#39;, param= c(log(1.2), 0.5)) +
              f(timeForInla, model = &#39;rw2&#39;, prior=&#39;pc.prec&#39;, param= c(0.01, 0.5)),
            data=xForInlaTotal70,
-           control.predictor = list(compute=TRUE, link=1), 
+           control.predictor = list(compute=TRUE, link=1),
            control.compute = list(config=TRUE), family=&#39;poisson&#39;)
 ### Take posterior samples of the intensity
 sampleList = INLA::inla.posterior.sample(100, res70, selection = list(Predictor = 0))
 sampleIntensity = exp(do.call(cbind, Biobase::subListExtract(sampleList, &quot;latent&quot;)))
-sampleDeaths = matrix(rpois(length(sampleIntensity), sampleIntensity), 
+sampleDeaths = matrix(rpois(length(sampleIntensity), sampleIntensity),
                       nrow(sampleIntensity), ncol(sampleIntensity))
 ### calculate excess deaths
 xPostCovidTotal = xPostCovid[xPostCovid$age == &quot;70 years old and over&quot;, ]
 xPostCovidForecast = sampleDeaths[match(xPostCovidTotal$time, xForInlaTotal$time), ]
 excessDeaths = xPostCovidTotal$dead - xPostCovidForecast
-### Total excess deaths march-may inclusive 
-excessDeathsSub = excessDeaths[xPostCovidTotal$time &gt; as.Date(&quot;2020/03/01&quot;) &amp; 
+### Total excess deaths march-may inclusive
+excessDeathsSub = excessDeaths[xPostCovidTotal$time &gt; as.Date(&quot;2020/03/01&quot;) &amp;
                                  xPostCovidTotal$time &lt; as.Date(&quot;2020/06/01&quot;), ]
-excessDeathsInPeriod = apply(excessDeathsSub, 2, sum) 
+excessDeathsInPeriod = apply(excessDeathsSub, 2, sum)
 wave1_70 &lt;- round(quantile(excessDeathsInPeriod))
 
 # table
 c &lt;- cbind(wave1_70, wave1_total)
 c %&gt;%
-  knitr::kable(caption = &quot;Quantiles of Posterior Sample Excess Deaths, 
-               March 1st - May 31st, 2020&quot; , booktabs = T, digits = 6, 
+  knitr::kable(caption = &quot;Quantiles of Posterior Sample Excess Deaths,
+               March 1st - May 31st, 2020&quot; , booktabs = T, digits = 6,
                col.names = c(&#39;70+ Years of Age&#39;, &#39;Total&#39;)) %&gt;%
   kableExtra::kable_classic(full_width = F, html_font = &quot;Cambria&quot;) %&gt;%
   kableExtra::kable_styling(latex_options = c(&quot;HOLD_position&quot;, &quot;striped&quot;))</code></pre>
@@ -128,12 +129,12 @@ c %&gt;%
 </div>
 <div id="senior-age-group-displayed-high-vulnerability-again-during-the-second-wave." class="section level2">
 <h2>3. Senior age group displayed high vulnerability again during the second wave.</h2>
-<pre class="r"><code># 70+ 
+<pre class="r"><code># 70+
 ### Take posterior samples of the intensity
 sampleList = INLA::inla.posterior.sample(100, res70, selection = list(Predictor = 0))
 sampleIntensity = exp(do.call(cbind, Biobase::subListExtract(sampleList, &quot;latent&quot;)))
 sampleDeaths = matrix(rpois(length(sampleIntensity),
-                            sampleIntensity), nrow(sampleIntensity), 
+                            sampleIntensity), nrow(sampleIntensity),
                       ncol(sampleIntensity))
 #### calculate excess deaths
 xPostCovidTotal = xPostCovid[xPostCovid$age == &quot;70 years old and over&quot;, ]
@@ -142,25 +143,25 @@ xPostCovidForecast = sampleDeaths[match(xPostCovidTotal$time, xForInlaTotal70$ti
 excessDeaths = xPostCovidTotal$dead - xPostCovidForecast
 #### plot samples of excess deaths
 temp70 &lt;- round(quantile(excessDeaths))
-matplot(xPostCovidTotal$time, excessDeaths, type = &quot;l&quot;, lty = 1, col = &quot;#00000030&quot;, 
-        main = &#39;Figure 4.: Posterior Sample Excess Deaths Among 70+ yo&#39;, 
+matplot(xPostCovidTotal$time, excessDeaths, type = &quot;l&quot;, lty = 1, col = &quot;#00000030&quot;,
+        main = &#39;Figure 4.: Posterior Sample Excess Deaths Among 70+ yo&#39;,
         xlab = &#39;Time&#39;, ylab = &#39;Excess Death&#39;, cex.main = 0.7)
 
 # &lt; 50
 ### fit a model for 70+ yo deaths in INLA
-xForInlaTotal50= xForInla[xForInla$age == &#39;0-49 years old&#39;, ] 
+xForInlaTotal50= xForInla[xForInla$age == &#39;0-49 years old&#39;, ]
 ### model
 res50 = inla(dead ~ sin12 + sin6 + cos12 + cos6 +
-             f(timeIid, prior=&#39;pc.prec&#39;, param= c(log(1.2), 0.5)) + 
+             f(timeIid, prior=&#39;pc.prec&#39;, param= c(log(1.2), 0.5)) +
              f(timeForInla, model = &#39;rw2&#39;, prior=&#39;pc.prec&#39;, param= c(0.01, 0.5)),
            data=xForInlaTotal50,
-           control.predictor = list(compute=TRUE, link=1), 
+           control.predictor = list(compute=TRUE, link=1),
            control.compute = list(config=TRUE), family=&#39;poisson&#39;)
 ### Take posterior samples of the intensity
 sampleList = INLA::inla.posterior.sample(100, res50, selection = list(Predictor = 0))
 sampleIntensity = exp(do.call(cbind, Biobase::subListExtract(sampleList, &quot;latent&quot;)))
 sampleDeaths = matrix(rpois(length(sampleIntensity),
-                            sampleIntensity), nrow(sampleIntensity), 
+                            sampleIntensity), nrow(sampleIntensity),
                       ncol(sampleIntensity))
 ### calculate excess deaths
 xPostCovidTotal = xPostCovid[xPostCovid$age == &quot;0-49 years old&quot;, ]
@@ -169,15 +170,15 @@ xPostCovidForecast = sampleDeaths[match(xPostCovidTotal$time, xForInlaTotal50$ti
 excessDeaths = xPostCovidTotal$dead - xPostCovidForecast
 ### plot samples of excess deaths
 temp50 &lt;- round(quantile(excessDeaths))
-matplot(xPostCovidTotal$time, excessDeaths, type = &quot;l&quot;, lty = 1, col = &quot;#00000030&quot;, 
-        main = &#39;Figure 5.: Posterior Sample Excess Deaths Among 0-49 yo&#39;, 
+matplot(xPostCovidTotal$time, excessDeaths, type = &quot;l&quot;, lty = 1, col = &quot;#00000030&quot;,
+        main = &#39;Figure 5.: Posterior Sample Excess Deaths Among 0-49 yo&#39;,
         xlab = &#39;Time&#39;, ylab = &#39;Excess Death&#39;, cex.main = 0.7)
 
 # table combined
 d&lt;- cbind(temp70, temp50)
 d %&gt;%
-  knitr::kable(caption = &quot;Quantile of Posterior Sample Excess Deaths, 
-               Sep 1st - Oct 21st, 2020&quot; , booktabs = T, digits = 6, 
+  knitr::kable(caption = &quot;Quantile of Posterior Sample Excess Deaths,
+               Sep 1st - Oct 21st, 2020&quot; , booktabs = T, digits = 6,
                col.names = c(&#39;70+ Year of Age&#39;, &#39;0-49 Years of Age&#39;)) %&gt;%
   kableExtra::kable_classic(full_width = F, html_font = &quot;Cambria&quot;) %&gt;%
   kableExtra::kable_styling(latex_options = c(&quot;HOLD_position&quot;, &quot;striped&quot;))</code></pre>

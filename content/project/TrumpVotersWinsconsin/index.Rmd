@@ -18,6 +18,7 @@ tags:
   - bym
   - maps
   - model
+  - recent
 subtitle: ''
 summary: 'A bayesian hierarchical spatial model analyzing demographic profile of 2016 Trump voters in Winsconsin using diseasemapping::bym in R.'
 authors: []

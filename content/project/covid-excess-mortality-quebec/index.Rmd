@@ -13,6 +13,7 @@ tags:
   - Bayesian
   - covid
   - model
+  - recent
 subtitle: ''
 summary: 'A Bayesian predictive model examining excess mortality in Québec (adjusted for seasonal variations) using inla package in R. '
 authors: []
@@ -46,7 +47,7 @@ Since the Poisson family is commonly used for positive and discrete data, we use
 * We then took 100 random posteriors samples and calculated excess deaths by comparing predicted mortality numbers with actual numbers.  
 
 This model was ran once for deaths of people aged 70 and above, and once for people aged 50 and under, in order to examine the hypothesis that the first wave of COVID-19 primary affected the elderly (70+) and second wave primarily affected younger people (<50). The model is shown below:  
-  
+
 $$\begin{aligned}
 Y_{i} & \sim Poisson(O_i \lambda_i)\\
 log(\lambda_i) & = X_i\beta + U_i + V_i\\
@@ -60,15 +61,15 @@ X_{i4} & = sin(2\pi t_i/182.625)\\
 
 ```{r model, eval = FALSE}
 # R code
-INLA::inla(dead ~ sin12 + sin6 + cos12 + cos6 + 
-             f(timeIid, prior='pc.prec', param= c(log(1.2), 0.5)) + 
+INLA::inla(dead ~ sin12 + sin6 + cos12 + cos6 +
+             f(timeIid, prior='pc.prec', param= c(log(1.2), 0.5)) +
              f(timeForInla, model = 'rw2', prior='pc.prec', param= c(0.01, 0.5)),
-           data=xForInlaTotal, 
-           control.predictor = list(compute=TRUE, link=1), 
+           data=xForInlaTotal,
+           control.predictor = list(compute=TRUE, link=1),
            control.compute = list(config=TRUE), family='poisson')
 ```
 
-  
+
 * In this model, the number of deaths $Y_{i}$ follows a Poisson distribution.  
 
 * In order to capture the seasonal variation of deaths, four sinusoidal basis functions $X_i$s were used to capture a wide range of seasonal effects using 12 month and a 6 month frequency cycles.   
@@ -79,34 +80,34 @@ INLA::inla(dead ~ sin12 + sin6 + cos12 + cos6 +
 
 * $V_i$ is the independent time variation for over-dispersion and follows a exponential prior of $param=c(log(1.2), 0.5)$, indicating a prior median $\tau$ of log(1.2). This prior was chosen based on our assumption that there will be 20% more deaths and with COVID pandemic, this is a reasonable guess.  
 
-  
+
 # Results  
 
 ## 1. Excess Mortality: What would mortality numbers look like in Québec if COVID-19 never happend?  
 
 ```{r q2 analysis1, eval = FALSE, include = TRUE, echo = FALSE}
 # Plot predicted intensity and random effect
-matplot(xForInlaTotal$time, res$summary.fitted.values[, qCols], type= "l", 
-        ylim = c(1000, 1800), lty = c(1, 2, 2), col = "black", log = "y", 
-        main = 'Figure 1.: Predicted and Actual Number of Deaths in Quebec', 
-        ylab = 'Deaths', xlab = 'Time', cex.main = 0.7) 
+matplot(xForInlaTotal$time, res$summary.fitted.values[, qCols], type= "l",
+        ylim = c(1000, 1800), lty = c(1, 2, 2), col = "black", log = "y",
+        main = 'Figure 1.: Predicted and Actual Number of Deaths in Quebec',
+        ylab = 'Deaths', xlab = 'Time', cex.main = 0.7)
 points(x[x$age == "Total", c("time", "dead")], cex = 0.4, col = "red")
-legend("topleft", col = 'red', legend = 'Actual Mortality Data', 
+legend("topleft", col = 'red', legend = 'Actual Mortality Data',
        bty = "n", pch = 1, cex = 0.8)
 
 # Take posterior samples of the intensity
 sampleList = INLA::inla.posterior.sample(100, res, selection = list(Predictor = 0))
 sampleIntensity = exp(do.call(cbind, Biobase::subListExtract(sampleList, "latent")))
-sampleDeaths = matrix(rpois(length(sampleIntensity), ampleIntensity), 
+sampleDeaths = matrix(rpois(length(sampleIntensity), ampleIntensity),
                       nrow(sampleIntensity), ncol(sampleIntensity))
 
 # plot samples and real data
-matplot(xForInlaTotal$time, sampleDeaths, col = "#00000010", 
-        lwd = 2, lty = 1, type = "l", log = "y", 
-        main = 'Figure 2.: Posterior Samples of Deaths in Quebec', 
+matplot(xForInlaTotal$time, sampleDeaths, col = "#00000010",
+        lwd = 2, lty = 1, type = "l", log = "y",
+        main = 'Figure 2.: Posterior Samples of Deaths in Quebec',
         ylab = 'Deaths', xlab = 'Time', cex.main = 0.7)
 points(x[x$age == "Total", c("time", "dead")], col = "red", cex = 0.5)
-legend("topleft", col = 'red', legend = 'Actual Mortality Data', 
+legend("topleft", col = 'red', legend = 'Actual Mortality Data',
        bty = "n", pch = 1, cex = 0.8)
 
 # calculate excess deaths
@@ -116,17 +117,17 @@ excessDeaths = xPostCovidTotal$dead - xPostCovidForecast
 
 # Total excess deaths march-may inclusive
 excessDeathsSub = excessDeaths[xPostCovidTotal$time > as.Date("2020/03/01") & xPostCovidTotal$time < as.Date("2020/10/21"), ]
-excessDeathsInPeriod = apply(excessDeathsSub, 2, sum) 
+excessDeathsInPeriod = apply(excessDeathsSub, 2, sum)
 
 # histogram of excess deaths from poterior samples
-hist(excessDeathsInPeriod, main = 'Figure 3.: Histogram of Total Excess Deaths 
-     from Posterior Samples, March 1st - October 21st, 2020', 
+hist(excessDeathsInPeriod, main = 'Figure 3.: Histogram of Total Excess Deaths
+     from Posterior Samples, March 1st - October 21st, 2020',
      xlab = 'Excess Deaths', cex.main = 0.7)
 
 ```
-  
+
 ![](graphs.jpg)
-  
+
 When examining COVID related questions, it is important first to recognize the severity of COVID and that COVID-19 is indeed more deadly than the common flu. **Figure 1 shows the predicted number of deaths in a world without COVID and the actual deaths during COVID months. Similarly, figure 2 represents deaths generated from 100 posterior samples in a COVID-free world, overlayed with actual data on top.** March 1st was determined as the day COVID hit Canada, therefore the cut off point for data used for predictions. It is easily observed from the figure that excess death was created as a result of COVID, especially around April (first wave) and recent months (second wave).   
 
 ![](histogram.jpg)  
@@ -145,39 +146,39 @@ excessDeaths = xPostCovidTotal$dead - xPostCovidForecast
 
 ### Total excess deaths march-may inclusive
 excessDeathsSub = excessDeaths[xPostCovidTotal$time > as.Date("2020/03/01") & xPostCovidTotal$time < as.Date("2020/06/01"), ]
-excessDeathsInPeriod = apply(excessDeathsSub, 2, sum) 
+excessDeathsInPeriod = apply(excessDeathsSub, 2, sum)
 wave1_total <- round(quantile(excessDeathsInPeriod))
 
 # 70+
 ### fit a model for 70+ yo deaths in INLA
-xForInlaTotal70= xForInla[xForInla$age == '70 years old and over', ] 
+xForInlaTotal70= xForInla[xForInla$age == '70 years old and over', ]
 ### model
 res70 = inla(dead ~ sin12 + sin6 + cos12 + cos6 +
-             f(timeIid, prior='pc.prec', param= c(log(1.2), 0.5)) + 
+             f(timeIid, prior='pc.prec', param= c(log(1.2), 0.5)) +
              f(timeForInla, model = 'rw2', prior='pc.prec', param= c(0.01, 0.5)),
            data=xForInlaTotal70,
-           control.predictor = list(compute=TRUE, link=1), 
+           control.predictor = list(compute=TRUE, link=1),
            control.compute = list(config=TRUE), family='poisson')
 ### Take posterior samples of the intensity
 sampleList = INLA::inla.posterior.sample(100, res70, selection = list(Predictor = 0))
 sampleIntensity = exp(do.call(cbind, Biobase::subListExtract(sampleList, "latent")))
-sampleDeaths = matrix(rpois(length(sampleIntensity), sampleIntensity), 
+sampleDeaths = matrix(rpois(length(sampleIntensity), sampleIntensity),
                       nrow(sampleIntensity), ncol(sampleIntensity))
 ### calculate excess deaths
 xPostCovidTotal = xPostCovid[xPostCovid$age == "70 years old and over", ]
 xPostCovidForecast = sampleDeaths[match(xPostCovidTotal$time, xForInlaTotal$time), ]
 excessDeaths = xPostCovidTotal$dead - xPostCovidForecast
-### Total excess deaths march-may inclusive 
-excessDeathsSub = excessDeaths[xPostCovidTotal$time > as.Date("2020/03/01") & 
+### Total excess deaths march-may inclusive
+excessDeathsSub = excessDeaths[xPostCovidTotal$time > as.Date("2020/03/01") &
                                  xPostCovidTotal$time < as.Date("2020/06/01"), ]
-excessDeathsInPeriod = apply(excessDeathsSub, 2, sum) 
+excessDeathsInPeriod = apply(excessDeathsSub, 2, sum)
 wave1_70 <- round(quantile(excessDeathsInPeriod))
 
 # table
 c <- cbind(wave1_70, wave1_total)
 c %>%
-  knitr::kable(caption = "Quantiles of Posterior Sample Excess Deaths, 
-               March 1st - May 31st, 2020" , booktabs = T, digits = 6, 
+  knitr::kable(caption = "Quantiles of Posterior Sample Excess Deaths,
+               March 1st - May 31st, 2020" , booktabs = T, digits = 6,
                col.names = c('70+ Years of Age', 'Total')) %>%
   kableExtra::kable_classic(full_width = F, html_font = "Cambria") %>%
   kableExtra::kable_styling(latex_options = c("HOLD_position", "striped"))
@@ -190,12 +191,12 @@ The first part of our hypothesis is that the first wave of COVID, from March to 
 ## 3. Senior age group displayed high vulnerability again during the second wave.  
 
 ```{r secondhypothesis, eval = FALSE}
-# 70+ 
+# 70+
 ### Take posterior samples of the intensity
 sampleList = INLA::inla.posterior.sample(100, res70, selection = list(Predictor = 0))
 sampleIntensity = exp(do.call(cbind, Biobase::subListExtract(sampleList, "latent")))
 sampleDeaths = matrix(rpois(length(sampleIntensity),
-                            sampleIntensity), nrow(sampleIntensity), 
+                            sampleIntensity), nrow(sampleIntensity),
                       ncol(sampleIntensity))
 #### calculate excess deaths
 xPostCovidTotal = xPostCovid[xPostCovid$age == "70 years old and over", ]
@@ -204,25 +205,25 @@ xPostCovidForecast = sampleDeaths[match(xPostCovidTotal$time, xForInlaTotal70$ti
 excessDeaths = xPostCovidTotal$dead - xPostCovidForecast
 #### plot samples of excess deaths
 temp70 <- round(quantile(excessDeaths))
-matplot(xPostCovidTotal$time, excessDeaths, type = "l", lty = 1, col = "#00000030", 
-        main = 'Figure 4.: Posterior Sample Excess Deaths Among 70+ yo', 
+matplot(xPostCovidTotal$time, excessDeaths, type = "l", lty = 1, col = "#00000030",
+        main = 'Figure 4.: Posterior Sample Excess Deaths Among 70+ yo',
         xlab = 'Time', ylab = 'Excess Death', cex.main = 0.7)
 
 # < 50
 ### fit a model for 70+ yo deaths in INLA
-xForInlaTotal50= xForInla[xForInla$age == '0-49 years old', ] 
+xForInlaTotal50= xForInla[xForInla$age == '0-49 years old', ]
 ### model
 res50 = inla(dead ~ sin12 + sin6 + cos12 + cos6 +
-             f(timeIid, prior='pc.prec', param= c(log(1.2), 0.5)) + 
+             f(timeIid, prior='pc.prec', param= c(log(1.2), 0.5)) +
              f(timeForInla, model = 'rw2', prior='pc.prec', param= c(0.01, 0.5)),
            data=xForInlaTotal50,
-           control.predictor = list(compute=TRUE, link=1), 
+           control.predictor = list(compute=TRUE, link=1),
            control.compute = list(config=TRUE), family='poisson')
 ### Take posterior samples of the intensity
 sampleList = INLA::inla.posterior.sample(100, res50, selection = list(Predictor = 0))
 sampleIntensity = exp(do.call(cbind, Biobase::subListExtract(sampleList, "latent")))
 sampleDeaths = matrix(rpois(length(sampleIntensity),
-                            sampleIntensity), nrow(sampleIntensity), 
+                            sampleIntensity), nrow(sampleIntensity),
                       ncol(sampleIntensity))
 ### calculate excess deaths
 xPostCovidTotal = xPostCovid[xPostCovid$age == "0-49 years old", ]
@@ -231,15 +232,15 @@ xPostCovidForecast = sampleDeaths[match(xPostCovidTotal$time, xForInlaTotal50$ti
 excessDeaths = xPostCovidTotal$dead - xPostCovidForecast
 ### plot samples of excess deaths
 temp50 <- round(quantile(excessDeaths))
-matplot(xPostCovidTotal$time, excessDeaths, type = "l", lty = 1, col = "#00000030", 
-        main = 'Figure 5.: Posterior Sample Excess Deaths Among 0-49 yo', 
+matplot(xPostCovidTotal$time, excessDeaths, type = "l", lty = 1, col = "#00000030",
+        main = 'Figure 5.: Posterior Sample Excess Deaths Among 0-49 yo',
         xlab = 'Time', ylab = 'Excess Death', cex.main = 0.7)
 
 # table combined
 d<- cbind(temp70, temp50)
 d %>%
-  knitr::kable(caption = "Quantile of Posterior Sample Excess Deaths, 
-               Sep 1st - Oct 21st, 2020" , booktabs = T, digits = 6, 
+  knitr::kable(caption = "Quantile of Posterior Sample Excess Deaths,
+               Sep 1st - Oct 21st, 2020" , booktabs = T, digits = 6,
                col.names = c('70+ Year of Age', '0-49 Years of Age')) %>%
   kableExtra::kable_classic(full_width = F, html_font = "Cambria") %>%
   kableExtra::kable_styling(latex_options = c("HOLD_position", "striped"))
@@ -249,10 +250,7 @@ d %>%
 
 
 As for our second hypothesis, we calculated excess deaths among 70+ year old age group (as shown in figure 4) and among 0-49 year old age group (as shown in figure 5) during both first and second wave of COVID-19. We define first wave as the time between March 1st and May 31st. We define the second wave as the time between September 1st and the most recent data, during the week of October 21st. As seen from table 4, the older population is again, similarly to the first wave, most vulnerable to COVID-19, as the excess deaths is around 110, whereas the excess death for 0-49 year-old is around 12.  
-  
+
 # Discussion  
 
 COVID-19 is more serious than the seasonal flu and has caused great number of excess deaths. Although many may believe the second wave was caused by irresponsible young people, we conclude that young people are not the most vulnerable population from such infectious disease. In fact, excess deaths are highest among people aged 70 and above, during both first and second wave of the pandemic. **Further investigation is needed on infection data in order to draw conclusion on whether it was mostly young people who were involved in the spreading of COVID-19 during second wave.**  
-
-
-
