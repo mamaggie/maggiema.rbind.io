@@ -15,6 +15,8 @@ tags:
   - bym model
   - covid
   - air pollution
+  - maps
+  - model
 subtitle: ''
 summary: 'A bym model with penalized complexity priors examining relationship between COVID-19 and air pollution in England.'
 authors: []
@@ -41,9 +43,9 @@ projects: []
 As we are interested in examining whether exposure to ambient air pollution makes individuals more susceptible to COVID-19 in England, a bayesian spatial model BYM with poisson distribution was fitted to the data, as shown below:</p>
 <pre class="r"><code># bym model with weakly informed priors, encouraging data to tell the story
 englandRes= diseasemapping::bym(
-  cases ~ offset(logExpected) + Ethnicity + modelledpm25 + Unemployment, 
-  prior = list(sd = c(0.5, 0.05), propSpatial = c(0.99, 0.01)), 
-  family = &#39;poisson&#39;, 
+  cases ~ offset(logExpected) + Ethnicity + modelledpm25 + Unemployment,
+  prior = list(sd = c(0.5, 0.05), propSpatial = c(0.99, 0.01)),
+  family = &#39;poisson&#39;,
   data = UK2)</code></pre>
 <p><span class="math display">\[
 \begin{aligned}
@@ -63,13 +65,13 @@ U_i \sim&amp; BYM(\sigma^2, \tau^2)\\
 <div id="table-of-parameters" class="section level2">
 <h2>Table of Parameters</h2>
 <pre class="r"><code># log relative risk (logged odds ratios) table
-temp &lt;- englandRes$parameters$summary[,c(1,3,5)] 
+temp &lt;- englandRes$parameters$summary[,c(1,3,5)]
 temp %&gt;%
   kableExtra::kbl(
-    caption = &quot;Parameter Posterior Means and 95% Credible Intervals 
+    caption = &quot;Parameter Posterior Means and 95% Credible Intervals
     (Log Odds)&quot;, booktabs = T, digits = 3) %&gt;%
   kableExtra::kable_classic(full_width = F, html_font = &quot;Cambria&quot;) %&gt;%
-  kableExtra::kable_styling(latex_options = c(&quot;HOLD_position&quot;, &quot;striped&quot;), 
+  kableExtra::kable_styling(latex_options = c(&quot;HOLD_position&quot;, &quot;striped&quot;),
                             position = &#39;float_right&#39;)</code></pre>
 <table class=" lightable-classic table" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; float: right; margin-left: 10px;">
 <caption>
@@ -187,7 +189,7 @@ oddsMat2[1,] = oddsMat2[1,]/(1 + oddsMat2[1, ])
 rownames(oddsMat2)[1] = &#39;Baseline prob&#39;
 oddsMat2 %&gt;%
   kableExtra::kbl(
-    caption = &quot;BYM Model Results From Voting Data (Odds Ratio)&quot;, 
+    caption = &quot;BYM Model Results From Voting Data (Odds Ratio)&quot;,
     booktabs = T, digits = 3) %&gt;%
   kableExtra::kable_classic(full_width = F, html_font = &quot;Cambria&quot;) %&gt;%
   kableExtra::kable_styling(latex_options = c(&quot;HOLD_position&quot;, &quot;striped&quot;),
@@ -307,7 +309,7 @@ propSpatial
 <div id="prior-and-posterior-density-distributions" class="section level2">
 <h2>Prior and Posterior Density Distributions</h2>
 <pre class="r"><code># prior and posteriors for SD
-plot(englandRes$parameters$sd$posterior, type = &#39;l&#39;, xlim = c(0,1), xlab = &#39;sd&#39;, 
+plot(englandRes$parameters$sd$posterior, type = &#39;l&#39;, xlim = c(0,1), xlab = &#39;sd&#39;,
      ylab = &#39;dens&#39;, cex.main = 0.6,
      main = &#39;Figure 1. Prior and Posterior Distribution for Standard Deviation&#39;)
 lines(englandRes$parameters$sd$prior, col = &#39;grey&#39;)
@@ -315,7 +317,7 @@ legend(&#39;topright&#39;, lty = 1, col = c(&#39;black&#39;, &#39;grey&#39;),
        legend = c(&#39;post&#39;, &#39;prior&#39;), bty = &#39;n&#39;)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/q2priorandposterior-1.png" width="576" /></p>
 <pre class="r"><code># prior and posterior for spatial proportion
-plot(englandRes$parameters$propSpatial$posterior, type = &#39;l&#39;, xlim = c(0,2.5), 
+plot(englandRes$parameters$propSpatial$posterior, type = &#39;l&#39;, xlim = c(0,2.5),
      xlab = &#39;prop spatial&#39;, ylab = &#39;dens&#39;, cex.main = 0.6,
      main = &#39;Figure 2. Prior and Posterior Distribution for Spatial Proportion&#39;)
 lines(englandRes$parameters$propSpatial$prior, col = &#39;red&#39;)
@@ -326,56 +328,56 @@ legend(&#39;topright&#39;, lty = 1, col = c(&#39;black&#39;, &#39;red&#39;),
 <div id="maps" class="section level2">
 <h2>Maps</h2>
 <pre class="r"><code># maps set up
-casesCol = mapmisc::colourScale(UK2$cases, dec = -3, breaks = 12, 
+casesCol = mapmisc::colourScale(UK2$cases, dec = -3, breaks = 12,
                                 col = &quot;Spectral&quot;, style = &quot;quantile&quot;, rev = TRUE)
-Ecol = mapmisc::colourScale(UK2$E, breaks = casesCol$breaks, 
+Ecol = mapmisc::colourScale(UK2$E, breaks = casesCol$breaks,
                             col = casesCol$col, style = &quot;fixed&quot;)
-pmCol = mapmisc::colourScale(UK2$modelledpm25, breaks = 9, 
+pmCol = mapmisc::colourScale(UK2$modelledpm25, breaks = 9,
                              dec = 0, style = &quot;quantile&quot;)
-ethCol = mapmisc::colourScale(UK2$Ethnicity, breaks = 9, 
+ethCol = mapmisc::colourScale(UK2$Ethnicity, breaks = 9,
                               digits = 1, style = &quot;quantile&quot;)
-uCol = mapmisc::colourScale(UK2$Unemployment, breaks = 12, 
+uCol = mapmisc::colourScale(UK2$Unemployment, breaks = 12,
                             dec = 0, style = &quot;quantile&quot;)
-rCol = mapmisc::colourScale(englandRes$data$random.mean, breaks = 12, 
+rCol = mapmisc::colourScale(englandRes$data$random.mean, breaks = 12,
                             dec = -log10(0.25), style = &quot;quantile&quot;)
-fCol = mapmisc::colourScale(englandRes$data$fitted.exp, breaks = 9, 
+fCol = mapmisc::colourScale(englandRes$data$fitted.exp, breaks = 9,
                             dec = 1, style = &quot;quantile&quot;)
-insetEngland1 = mapmisc::openmap(UK2, zoom = 3, fact = 4, path = &quot;waze&quot;, 
+insetEngland1 = mapmisc::openmap(UK2, zoom = 3, fact = 4, path = &quot;waze&quot;,
                                  crs = CRS(&quot;+init=epsg:3035&quot;))
 
 # England raster reference file
-insetEngland = raster::crop(insetEngland1, extend(extent(insetEngland1), 
+insetEngland = raster::crop(insetEngland1, extend(extent(insetEngland1),
                                               -c(25, 7, 4, 9.5) * 100 * 1000))
 
 # construct maps
 par(mfrow = c(3,3))
 mapmisc::map.new(UK2)
-mapmisc::insetMap(UK_shp, &quot;topright&quot;, insetEngland, width = 0.4) 
-plot(UK2, col = casesCol$plot, add = TRUE, lwd = 0.2) 
+mapmisc::insetMap(UK_shp, &quot;topright&quot;, insetEngland, width = 0.4)
+plot(UK2, col = casesCol$plot, add = TRUE, lwd = 0.2)
 mapmisc::legendBreaks(&quot;left&quot;, casesCol, bty = &quot;n&quot;)
 
 mapmisc::map.new(UK2)
-plot(UK2, col = Ecol$plot, add = TRUE, lwd = 0.2) 
-mapmisc::legendBreaks(&quot;left&quot;, casesCol, bty = &quot;n&quot;) 
+plot(UK2, col = Ecol$plot, add = TRUE, lwd = 0.2)
+mapmisc::legendBreaks(&quot;left&quot;, casesCol, bty = &quot;n&quot;)
 
 mapmisc::map.new(UK2)
-plot(UK2, col = pmCol$plot, add = TRUE, lwd = 0.2) 
-mapmisc::legendBreaks(&quot;left&quot;, pmCol, bty = &quot;n&quot;) 
+plot(UK2, col = pmCol$plot, add = TRUE, lwd = 0.2)
+mapmisc::legendBreaks(&quot;left&quot;, pmCol, bty = &quot;n&quot;)
 
 mapmisc::map.new(UK2)
-plot(UK2, col = ethCol$plot, add = TRUE, lwd = 0.2) 
-mapmisc::legendBreaks(&quot;left&quot;, ethCol, bty = &quot;n&quot;) 
+plot(UK2, col = ethCol$plot, add = TRUE, lwd = 0.2)
+mapmisc::legendBreaks(&quot;left&quot;, ethCol, bty = &quot;n&quot;)
 
 mapmisc::map.new(UK2)
-plot(UK2, col = uCol$plot, add = TRUE, lwd = 0.2) 
-mapmisc::legendBreaks(&quot;left&quot;, uCol, bty = &quot;n&quot;) 
+plot(UK2, col = uCol$plot, add = TRUE, lwd = 0.2)
+mapmisc::legendBreaks(&quot;left&quot;, uCol, bty = &quot;n&quot;)
 
 mapmisc::map.new(UK2)
-plot(UK2, col = rCol$plot, add = TRUE, lwd = 0.2) 
-mapmisc::legendBreaks(&quot;left&quot;, rCol, bty = &quot;n&quot;) 
+plot(UK2, col = rCol$plot, add = TRUE, lwd = 0.2)
+mapmisc::legendBreaks(&quot;left&quot;, rCol, bty = &quot;n&quot;)
 
 mapmisc::map.new(UK2)
-plot(UK2, col = fCol$plot, add = TRUE, lwd = 0.2) 
+plot(UK2, col = fCol$plot, add = TRUE, lwd = 0.2)
 mapmisc::legendBreaks(&quot;left&quot;, fCol, bty = &quot;n&quot;)</code></pre>
 <p><img src="maps.jpg" /><br />
 The figure above is a series of maps visualizing the predicted outcome for each covariate, the dependent variable, and random effects. Map (a) represents COVID-19 cases in England by health region, we see that most severely impacted health regions are in the northwest and southeast corners of the country. According the independent and spatial random effect maps (f and g), we can conclude that most of the variations in the northeast corner can be explained by covariates and the spatial random effect. However, due to possible lack of data, we’re unsure of the variation in southern England. Since pm2.5 (c) is not a significant predictor variable, there are other significant factors which are not included in the current model. Last but not least, an exceedance map pr(<span class="math inline">\(\lambda\)</span>(s) &gt; 1.1|Y) could show us which health regions exist COVID-19 excess cases of 10% or more.</p>

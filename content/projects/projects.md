@@ -13,14 +13,12 @@ content:
     tag: r
   - name: maps
     tag: maps
-  - name: regression
-    tag: regression
   - name: data viz
     tag: data viz
   - name: research
     tag: research
-  - name: spatial stats
-    tag: spatial statistics
+  - name: models
+    tag: model
   filter_default: 0
   page_type: project
 design:
