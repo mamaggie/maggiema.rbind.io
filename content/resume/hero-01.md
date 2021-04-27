@@ -21,4 +21,4 @@ title: ""
 weight: 10
 widget: blank
 ---
-{{< icon name="download" pack="fas" >}} Download my resume {{< staticref "media/resume.pdf" "newtab" >}}here{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/MaggieMa_1page_resume.pdf" "newtab" >}}1-page resume{{< /staticref >}} / {{< staticref "media/MaggieMa_fullCV.pdf" "newtab" >}}full CV{{< /staticref >}}.  
