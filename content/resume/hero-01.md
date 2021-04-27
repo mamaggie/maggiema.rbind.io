@@ -11,9 +11,9 @@ design:
   columns: "1"
   spacing:
     padding:
-    - 100px
+    - 70px
     - 200px
-    - 100px
+    - 70px
     - 200px
 headless: true
 subtitle: ""
