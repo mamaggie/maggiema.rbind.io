@@ -47,8 +47,12 @@ superuser: true
 title: Maggie Ma
 ---
 
-I am graduating from the University of Toronto this April with two majors in Statistics and Human Geography, and a minor in Geographic Information System (GIS).   
+<!-- I am graduating from the University of Toronto this May with two majors in Statistics and Human Geography, and a minor in Geographic Information System (GIS).    -->
 
-My research interests lie at the intersection of spatial statistics and data viz/human-computer interaction (HCI). My previous professional and academic experience mostly involved predictive Bayesian modeling, spatial analysis (GIS & INLA in R), interactive map design, and Engineering consulting. My career goal is to leverage spatial data and visualization design principles to generate data-driven insights and solutions which deliver tangible social impact and drive businesses decisions.
+My research interests lie at the intersection of spatial statistics and data viz/human-computer interaction (HCI).  
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/resume.pdf" "newtab" >}}resume{{< /staticref >}}.
+I have previous professional and academic experience with predictive Bayesian modeling, spatial analysis (GIS & INLA in R), interactive map design, and Engineering consulting.   
+
+My career goal is to leverage spatial data and visualization design principles to generate data-driven insights in the areas of social impact and businesses decisions.  
+
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/MaggieMa_1page_resume.pdf" "newtab" >}}one-page resume{{< /staticref >}} / {{< staticref "media/MaggieMa_fullCV.pdf" "newtab" >}}full CV{{< /staticref >}}.
