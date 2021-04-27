@@ -4,7 +4,7 @@
 
 widget = "pages"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
-active = true  # Activate this widget? true/false
+active = false  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
 title = ""
@@ -15,7 +15,7 @@ subtitle = "Projects"
   page_type = "project"
 
   # Choose how much pages you would like to display (0 = all pages)
-  count = 3
+  count = 1
 
   # Choose how many pages you would like to offset by
   offset = 0
