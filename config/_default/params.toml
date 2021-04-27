@@ -105,8 +105,8 @@ appointment_url = ""
 # Contact links
 #   Set to `[]` to disable, or comment out unwanted lines with a hash `#`.
 contact_links = [
-  {icon = "linkedin-in", icon_pack ='fab', name = "Connect with me on Linkedin", link = "https://www.linkedin.com/in/y-maggie-ma/"}
-  # {icon = "twitter", icon_pack = "fab", name = "DM Me", link = "https://twitter.com/apreshill"},
+  {icon = "linkedin-in", icon_pack ='fab', name = "Connect with me on Linkedin", link = "https://www.linkedin.com/in/y-maggie-ma/"},
+  {icon = "envelope-open-text", icon_pack = "fas", name = "Send me an email", link = "mailto://yifei.ma@mail.utoronto.ca"}
   # {icon = "keybase", icon_pack = "fab", name = "Chat on Keybase", link = "https://keybase.io/"},
   # {icon = "comments", icon_pack = "fas", name = "Ask for help on RStudio Community", link = "https://community.rstudio.com/"},
   # {icon = "telegram", icon_pack = "fab", name = "Telegram Me", link = "https://telegram.me/@Telegram"},
