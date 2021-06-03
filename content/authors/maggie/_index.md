@@ -57,4 +57,4 @@ My career goal is to leverage spatial data and visualization design principles t
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/MaggieMa_1page_resume.pdf" "newtab" >}}one-page resume{{< /staticref >}} / {{< staticref "media/MaggieMa_fullCV.pdf" "newtab" >}}full CV{{< /staticref >}}.  
 
-{{< icon name="laptop-code" pack="fas" >}} Python • R • ESRI|QGIS • SQL|PostGIS|PostgreSQL • JavaScript
+{{< icon name="laptop-code" pack="fas" >}} Python • R • ESRI|QGIS • SQL|PostGIS|PostgreSQL • JavaScript • HTML
