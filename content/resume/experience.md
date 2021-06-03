@@ -19,20 +19,30 @@ date_format = "January 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[experience]]
+  company = 'Flipp'
+  company_url = 'https://flipp.com/home'
+  date_start = '2021-05-25'
+  location = 'Remote'
+  title = 'Contract Researcher'
+  description = 'Examine the impact of COVID-19 on food shopping behaviors through mobile app data'
+
+[[experience]]
   company = "School of Cities"
   company_url = "https://www.schoolofcities.utoronto.ca/urban-pilot-lab/multidisciplinary-urban-capstone-project/"
   date_start = "2020-09-01"
+  date_end = '2021-04-30'
   location = "Remote"
   title = "Student Consultant"
   description = """Multidisciplinary Capstone Design Project  
   * Key Living: Measuring and Enhancing Community Vitality"""
 
 [[experience]]
-  title = "Planning Placement Student"
+  title = "Planning Intern"
   company = "City of Toronto, City Planning Division, Strategic Initiatives, Policy and Analysis"
   company_url = "https://www.toronto.ca/city-government/accountability-operations-customer-service/city-administration/staff-directory-divisions-and-customer-service/city-planning/"
   location = 'Remote'
   date_start = '2020-09-01'
+  date_end = '2021-04-30'
   description = "Project: MTSA Development Around Transit Stations"
 
 [[experience]]
