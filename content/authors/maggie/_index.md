@@ -51,8 +51,10 @@ title: Maggie Ma
 
 My research interests lie at the intersection of spatial statistics and data viz/human-computer interaction (HCI).  
 
-I have previous professional and academic experience with predictive Bayesian modeling, spatial analysis (GIS & INLA in R), interactive map design, and Engineering consulting.   
+I have previous professional and academic experience with predictive Bayesian modeling, spatial analysis, interactive map design, database management, and Engineering consulting.   
 
-My career goal is to leverage spatial data and visualization design principles to generate data-driven insights in the areas of social impact and businesses decisions.  
+My career goal is to leverage spatial data and visualization design principles to generate data-driven insights in the areas of social impact and business decisions.  
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/MaggieMa_1page_resume.pdf" "newtab" >}}one-page resume{{< /staticref >}} / {{< staticref "media/MaggieMa_fullCV.pdf" "newtab" >}}full CV{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/MaggieMa_1page_resume.pdf" "newtab" >}}one-page resume{{< /staticref >}} / {{< staticref "media/MaggieMa_fullCV.pdf" "newtab" >}}full CV{{< /staticref >}}.  
+
+{{< icon name="laptop-code" pack="fas" >}} Python • R • ESRI|QGIS • SQL|PostGIS|PostgreSQL • JavaScript
