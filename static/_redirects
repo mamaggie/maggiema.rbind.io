@@ -1,1 +1,3 @@
 https://maggiema.netlify.app/*  https://maggiema.rbind.io/:splat  301!
+http://maggiema.netlify.app/*  https://maggiema.rbind.io/:splat  301!
+http://maggiema.rbind.io/*  https://maggiema.rbind.io/:splat  301!
